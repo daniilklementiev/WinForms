@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "HQe/ORViMEjExaJCdXdcyosyb7P4GKWfYfHMWSar1Zmlbu3j+Hu/suhTyOSUcymHrMw9z0SPjdtu1ipRbQAYNg==",
+  "dgSpecHash": "XB5kxbssu/bAeBJHGw0zU4HG10o9XPbuHzxc6ZMPFLbgCLfxm2Vdf5hxNlY08sMFSQu5KejFm1cU8jM/LC5HQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\luche\\source\\repos\\C#\\WinForms\\WinForms\\WinForms.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\WinForms.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\daniil\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512",
+    "C:\\Users\\daniil\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\daniil\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\daniil\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

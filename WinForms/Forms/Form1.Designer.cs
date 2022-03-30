@@ -44,106 +44,116 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitle.Font = new System.Drawing.Font("FuturaMediumC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Segoe Print", 25.875F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Black;
-            this.labelTitle.Location = new System.Drawing.Point(344, 9);
+            this.labelTitle.Location = new System.Drawing.Point(38, -9);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(85, 31);
+            this.labelTitle.Size = new System.Drawing.Size(1433, 122);
             this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "LABEL";
+            this.labelTitle.Text = "Знамоство с элементами управления";
             // 
             // ButtonDemo
             // 
             this.ButtonDemo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonDemo.Location = new System.Drawing.Point(114, 88);
+            this.ButtonDemo.Location = new System.Drawing.Point(256, 187);
+            this.ButtonDemo.Margin = new System.Windows.Forms.Padding(6);
             this.ButtonDemo.Name = "ButtonDemo";
-            this.ButtonDemo.Size = new System.Drawing.Size(75, 23);
+            this.ButtonDemo.Size = new System.Drawing.Size(139, 49);
             this.ButtonDemo.TabIndex = 1;
-            this.ButtonDemo.Text = "Press me";
+            this.ButtonDemo.Text = "Нажать";
             this.ButtonDemo.UseVisualStyleBackColor = true;
             this.ButtonDemo.Click += new System.EventHandler(this.ButtonDemo_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Programme Regular", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 90);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(22, 192);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 18);
+            this.label1.Size = new System.Drawing.Size(232, 36);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Button:";
+            this.label1.Text = "Кнопка(Button):";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 121);
+            this.label2.Location = new System.Drawing.Point(22, 258);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 15);
+            this.label2.Size = new System.Drawing.Size(155, 32);
             this.label2.TabIndex = 3;
-            this.label2.Text = "label";
+            this.label2.Text = "Метка (label)";
             // 
             // text
             // 
             this.text.AutoSize = true;
-            this.text.Font = new System.Drawing.Font("Bebas Neue", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.text.Location = new System.Drawing.Point(114, 121);
+            this.text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.text.Location = new System.Drawing.Point(212, 258);
+            this.text.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(115, 23);
+            this.text.Size = new System.Drawing.Size(237, 37);
             this.text.TabIndex = 4;
-            this.text.Text = "What a nice text";
+            this.text.Text = "Текст(textbox)";
             // 
             // Notifications
             // 
             this.Notifications.AutoSize = true;
-            this.Notifications.Location = new System.Drawing.Point(114, 149);
+            this.Notifications.Location = new System.Drawing.Point(132, 315);
+            this.Notifications.Margin = new System.Windows.Forms.Padding(6);
             this.Notifications.Name = "Notifications";
-            this.Notifications.Size = new System.Drawing.Size(15, 14);
+            this.Notifications.Size = new System.Drawing.Size(138, 36);
             this.Notifications.TabIndex = 5;
+            this.Notifications.Text = "Чекбокс";
             this.Notifications.UseVisualStyleBackColor = true;
             this.Notifications.CheckedChanged += new System.EventHandler(this.Notifications_CheckedChanged);
             // 
             // GetNotifications
             // 
             this.GetNotifications.AutoSize = true;
-            this.GetNotifications.Location = new System.Drawing.Point(12, 148);
+            this.GetNotifications.Location = new System.Drawing.Point(22, 316);
+            this.GetNotifications.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.GetNotifications.Name = "GetNotifications";
-            this.GetNotifications.Size = new System.Drawing.Size(96, 15);
+            this.GetNotifications.Size = new System.Drawing.Size(83, 32);
             this.GetNotifications.TabIndex = 6;
-            this.GetNotifications.Text = "Get Notifications";
+            this.GetNotifications.Text = "Метка";
             // 
             // ListBoxDemo
             // 
-            this.ListBoxDemo.Font = new System.Drawing.Font("Webdings", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ListBoxDemo.Font = new System.Drawing.Font("Times New Roman", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ListBoxDemo.FormattingEnabled = true;
-            this.ListBoxDemo.ItemHeight = 19;
-            this.ListBoxDemo.Location = new System.Drawing.Point(417, 44);
+            this.ListBoxDemo.ItemHeight = 42;
+            this.ListBoxDemo.Location = new System.Drawing.Point(774, 94);
+            this.ListBoxDemo.Margin = new System.Windows.Forms.Padding(6);
             this.ListBoxDemo.Name = "ListBoxDemo";
-            this.ListBoxDemo.Size = new System.Drawing.Size(371, 384);
+            this.ListBoxDemo.Size = new System.Drawing.Size(686, 802);
             this.ListBoxDemo.TabIndex = 7;
-            this.ListBoxDemo.DoubleClick += new System.EventHandler(this.ListBoxDemo_DoubleClick);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 169);
+            this.textBox1.Location = new System.Drawing.Point(104, 367);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(115, 23);
+            this.textBox1.Size = new System.Drawing.Size(210, 39);
             this.textBox1.TabIndex = 8;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Input
             // 
             this.Input.AutoSize = true;
-            this.Input.Location = new System.Drawing.Point(12, 172);
+            this.Input.Location = new System.Drawing.Point(22, 367);
+            this.Input.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Input.Name = "Input";
-            this.Input.Size = new System.Drawing.Size(35, 15);
+            this.Input.Size = new System.Drawing.Size(70, 32);
             this.Input.TabIndex = 9;
             this.Input.Text = "Input";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1486, 960);
             this.Controls.Add(this.Input);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ListBoxDemo);
@@ -154,6 +164,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonDemo);
             this.Controls.Add(this.labelTitle);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

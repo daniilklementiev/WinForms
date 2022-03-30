@@ -29,7 +29,7 @@ namespace WinForms
 
             count++;
 
-            ListBoxDemo.Items.Add(count.ToString());
+            ListBoxDemo.Items.Add("Вы нажали кнопку");
 
             if (count % 10 > 1 && count % 10 < 5 && count < 10)
             {
@@ -40,7 +40,7 @@ namespace WinForms
                 labelTitle.Text = $"Кнопка нажата {count} раз";
             }
 
-            text.Text = "button pressed";
+            text.Text = "Нажато";
 
         }
 
@@ -56,11 +56,6 @@ namespace WinForms
                 GetNotifications.ForeColor = Color.Red;
             }
 
-        }
-
-        private void ListBoxDemo_DoubleClick(object sender, EventArgs e)
-        {
-            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

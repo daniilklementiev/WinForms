@@ -56,8 +56,7 @@ namespace WinForms.Forms
             }
             else
             {
-            richTextBox.Text += clicked.Text;
-
+                richTextBox.Text += clicked.Text;
             }
 
         }
@@ -78,6 +77,26 @@ namespace WinForms.Forms
             richTextBox.Text += clicked.Text;
         }
 
+        private void buttonClearLast_Click(object sender, EventArgs e)
+        {
+            int lenght = richTextBox.Text.Length - 1;
+            string text = richTextBox.Text;
+            richTextBox.Clear();
+            for (int i = 0; i < lenght; i++)
+            {
+                richTextBox.Text = richTextBox.Text + text[i];
+            }
+        }
 
+        private void buttonClearDisp_Click(object sender, EventArgs e)
+        {
+            richTextBox.Clear();
+        }
+
+        private void buttonClearAll_Click(object sender, EventArgs e)
+        {
+            richTextBox.Clear();
+            History.Text = String.Empty;
+        }
     }
 }
