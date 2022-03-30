@@ -41,7 +41,6 @@
             this.buttonMinus = new System.Windows.Forms.Button();
             this.buttonDot = new System.Windows.Forms.Button();
             this.buttonEquals = new System.Windows.Forms.Button();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.History = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.buttonClearAll = new System.Windows.Forms.Button();
             this.buttonClearLast = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.richTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSeven
@@ -242,20 +242,6 @@
             this.buttonEquals.UseVisualStyleBackColor = false;
             this.buttonEquals.Click += new System.EventHandler(this.buttonEquals_Click);
             // 
-            // richTextBox
-            // 
-            this.richTextBox.BackColor = System.Drawing.Color.Black;
-            this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.richTextBox.Location = new System.Drawing.Point(22, 198);
-            this.richTextBox.Margin = new System.Windows.Forms.Padding(6);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.richTextBox.Size = new System.Drawing.Size(592, 205);
-            this.richTextBox.TabIndex = 2;
-            this.richTextBox.Text = "0";
-            // 
             // History
             // 
             this.History.AutoSize = true;
@@ -374,14 +360,27 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.buttonDigit_Click);
             // 
+            // richTextBox
+            // 
+            this.richTextBox.BackColor = System.Drawing.Color.Black;
+            this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.richTextBox.Location = new System.Drawing.Point(12, 229);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(601, 122);
+            this.richTextBox.TabIndex = 4;
+            this.richTextBox.Text = "0";
+            this.richTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(627, 1276);
-            this.Controls.Add(this.History);
             this.Controls.Add(this.richTextBox);
+            this.Controls.Add(this.History);
             this.Controls.Add(this.buttonEquals);
             this.Controls.Add(this.buttonClearAll);
             this.Controls.Add(this.buttonClearDisp);
@@ -428,7 +427,6 @@
         private System.Windows.Forms.Button buttonMinus;
         private System.Windows.Forms.Button buttonDot;
         private System.Windows.Forms.Button buttonEquals;
-        private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.Label History;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -437,5 +435,6 @@
         private System.Windows.Forms.Button buttonClearAll;
         private System.Windows.Forms.Button buttonClearLast;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox richTextBox;
     }
 }

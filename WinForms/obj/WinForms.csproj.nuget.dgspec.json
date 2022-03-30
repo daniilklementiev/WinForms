@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\WinForms.csproj": {}
+    "C:\\Users\\daniil\\source\\repos\\Forms\\WinForms\\WinForms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\WinForms.csproj": {
+    "C:\\Users\\daniil\\source\\repos\\Forms\\WinForms\\WinForms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\WinForms.csproj",
+        "projectUniqueName": "C:\\Users\\daniil\\source\\repos\\Forms\\WinForms\\WinForms.csproj",
         "projectName": "WinForms",
-        "projectPath": "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\WinForms.csproj",
+        "projectPath": "C:\\Users\\daniil\\source\\repos\\Forms\\WinForms\\WinForms.csproj",
         "packagesPath": "C:\\Users\\daniil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\obj\\",
+        "outputPath": "C:\\Users\\daniil\\source\\repos\\Forms\\WinForms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XB5kxbssu/bAeBJHGw0zU4HG10o9XPbuHzxc6ZMPFLbgCLfxm2Vdf5hxNlY08sMFSQu5KejFm1cU8jM/LC5HQg==",
+  "dgSpecHash": "OIWkuDQyyvj2aZj4f4zpfl0GLGgosbYd0cHcZj7r4FLMCdIoI2DJBhrkFAFpNhb+8imSNvgKvT7UoNtl6GGNjQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\daniil\\Source\\Repos\\Forms\\WinForms\\WinForms.csproj",
+  "projectFilePath": "C:\\Users\\daniil\\source\\repos\\Forms\\WinForms\\WinForms.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\daniil\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512",
     "C:\\Users\\daniil\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
