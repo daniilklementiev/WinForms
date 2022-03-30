@@ -26,7 +26,6 @@ C:\Users\daniil\Source\Repos\Forms\WinForms\bin\Debug\net5.0-windows\WinForms.ru
 C:\Users\daniil\Source\Repos\Forms\WinForms\bin\Debug\net5.0-windows\WinForms.dll
 C:\Users\daniil\Source\Repos\Forms\WinForms\bin\Debug\net5.0-windows\WinForms.pdb
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.csproj.AssemblyReference.cache
-C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.Calculator.resources
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Form1.resources
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.Portal.resources
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Properties.Resources.resources
@@ -40,3 +39,4 @@ C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\refint\WinF
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.pdb
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.genruntimeconfig.cache
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\ref\WinForms.dll
+C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.Calculator.resources
