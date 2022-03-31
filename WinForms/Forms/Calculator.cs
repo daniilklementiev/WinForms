@@ -91,12 +91,12 @@ namespace WinForms.Forms
 
         private void buttonClearDisp_Click(object sender, EventArgs e)
         {
-            richTextBox.Clear();
+            richTextBox.Text = "0";
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
         {
-            richTextBox.Clear();
+            richTextBox.Text = "0";
             History.Text = String.Empty;
         }
     }
