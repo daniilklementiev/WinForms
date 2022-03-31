@@ -20,14 +20,14 @@ namespace WinForms.Forms
         {
             InitializeComponent();
             operation = Operations.None;
-            logger = LogManager.GetCurrentClassLogger();
+            logger = LogManager.GetCurrentClassLogger(); // привязка логгера
         }
         public static bool BlockOperator { get; set; }
 
         static Calculator()
         {
             BlockOperator = true;
-            logger = LogManager.GetCurrentClassLogger();
+            logger = LogManager.GetCurrentClassLogger(); // привязка логгера
         }
         
         private void Calculator_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace WinForms.Forms
             if (clickedButton == null)
             {
                 // Exception: invalid sender. Log'em it
-                logger.Error("Invalid sender");
+                logger.Error("Invalid sender"); 
                 return;
             }
 
@@ -106,10 +106,10 @@ namespace WinForms.Forms
 
         private void buttonClearLast_Click(object sender, EventArgs e)
         {
-            int lenght = richTextBox.Text.Length - 1;
-            string text = richTextBox.Text;
+            int lenght = richTextBox.Text.Length - 1; // длина новой строки
+            string text = richTextBox.Text; // временная переменная для старого текста
             richTextBox.Clear();
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < lenght; i++) // цикл для переноса текста без 1 символа
             {
                 richTextBox.Text = richTextBox.Text + text[i];
             }
@@ -128,7 +128,7 @@ namespace WinForms.Forms
         }
     }
 
-    enum Operations
+    enum Operations // перечисление кнопок операций
     {
         None,
         Add,
