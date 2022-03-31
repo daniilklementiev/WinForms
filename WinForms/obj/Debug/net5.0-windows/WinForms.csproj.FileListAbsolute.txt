@@ -40,3 +40,5 @@ C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.pd
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.genruntimeconfig.cache
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\ref\WinForms.dll
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.Calculator.resources
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\NLog.dll
+C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.csproj.CopyComplete

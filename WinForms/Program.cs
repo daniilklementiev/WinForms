@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace WinForms
 {
+
     internal static class Program
     {
         /// <summary>
@@ -14,9 +16,23 @@ namespace WinForms
         [STAThread]
         static void Main()
         {
+            // WinForms cofiguration
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Additional configurator
+            // NLog
+            var nlogConfig = new NLog.Config.LoggingConfiguration();
+            nlogConfig.AddRule(LogLevel.Trace, LogLevel.Fatal,
+                new NLog.Targets.FileTarget("fileTarget")
+                {
+                    FileName = "log.txt"
+                });
+            
+            NLog.LogManager.Configuration = nlogConfig;
+            
+            // Run app
             Application.Run(new Forms.Portal());
         }
     }

@@ -8,27 +8,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace WinForms.Forms
 {
     public partial class Calculator : Form
     {
+        private static Logger logger;
+        private Operations operation; // Saved operation after push button
         public Calculator()
         {
             InitializeComponent();
+            operation = Operations.None;
+            logger = LogManager.GetCurrentClassLogger();
         }
         public static bool BlockOperator { get; set; }
 
         static Calculator()
         {
             BlockOperator = true;
+            logger = LogManager.GetCurrentClassLogger();
         }
-
+        
         private void Calculator_Load(object sender, EventArgs e)
+        {
+            var clickedButton = sender as Button;
+            if (clickedButton == null)
+            {
+                // Exception: invalid sender. Log'em it
+                logger.Error("Invalid sender");
+                return;
+            }
+
+            if (clickedButton == buttonAdd) operation = Operations.Add;
+            else if (clickedButton == buttonSub) operation = Operations.Sub;
+            else if (clickedButton == buttonDiv) operation = Operations.Div;
+            else if (clickedButton == buttonMul) operation = Operations.Mul;
+            else
+            {
+                // Exception: invalid button. Log'em it
+                logger.Error("Invalid button clicked");
+                return;
+            }
+        }
+        private void buttonOperatin_Click(object sender, EventArgs e)
         {
 
         }
-
         private void buttonEquals_Click(object sender, EventArgs e)
         {
             var answer = new DataTable().Compute(richTextBox.Text.Replace('x', '*').Replace('÷', '/'), null);
@@ -87,6 +113,7 @@ namespace WinForms.Forms
             {
                 richTextBox.Text = richTextBox.Text + text[i];
             }
+
         }
 
         private void buttonClearDisp_Click(object sender, EventArgs e)
@@ -99,5 +126,14 @@ namespace WinForms.Forms
             richTextBox.Text = "0";
             History.Text = String.Empty;
         }
+    }
+
+    enum Operations
+    {
+        None,
+        Add,
+        Sub,
+        Mul,
+        Div
     }
 }

@@ -32,13 +32,13 @@
             this.buttonSeven = new System.Windows.Forms.Button();
             this.buttonEight = new System.Windows.Forms.Button();
             this.buttonNine = new System.Windows.Forms.Button();
-            this.buttonMultiply = new System.Windows.Forms.Button();
+            this.buttonMul = new System.Windows.Forms.Button();
             this.buttonFour = new System.Windows.Forms.Button();
             this.buttonFive = new System.Windows.Forms.Button();
             this.buttonSix = new System.Windows.Forms.Button();
-            this.buttonDevide = new System.Windows.Forms.Button();
-            this.buttonPlus = new System.Windows.Forms.Button();
-            this.buttonMinus = new System.Windows.Forms.Button();
+            this.buttonDiv = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonSub = new System.Windows.Forms.Button();
             this.buttonDot = new System.Windows.Forms.Button();
             this.buttonEquals = new System.Windows.Forms.Button();
             this.History = new System.Windows.Forms.Label();
@@ -100,21 +100,21 @@
             this.buttonNine.UseVisualStyleBackColor = false;
             this.buttonNine.Click += new System.EventHandler(this.buttonDigit_Click);
             // 
-            // buttonMultiply
+            // buttonMul
             // 
-            this.buttonMultiply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.buttonMultiply.FlatAppearance.BorderSize = 0;
-            this.buttonMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMultiply.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonMultiply.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonMultiply.Location = new System.Drawing.Point(475, 593);
-            this.buttonMultiply.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMultiply.Name = "buttonMultiply";
-            this.buttonMultiply.Size = new System.Drawing.Size(139, 160);
-            this.buttonMultiply.TabIndex = 0;
-            this.buttonMultiply.Text = "x";
-            this.buttonMultiply.UseVisualStyleBackColor = false;
-            this.buttonMultiply.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonMul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonMul.FlatAppearance.BorderSize = 0;
+            this.buttonMul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMul.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonMul.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonMul.Location = new System.Drawing.Point(475, 593);
+            this.buttonMul.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMul.Name = "buttonMul";
+            this.buttonMul.Size = new System.Drawing.Size(139, 160);
+            this.buttonMul.TabIndex = 0;
+            this.buttonMul.Text = "x";
+            this.buttonMul.UseVisualStyleBackColor = false;
+            this.buttonMul.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // buttonFour
             // 
@@ -164,53 +164,53 @@
             this.buttonSix.UseVisualStyleBackColor = false;
             this.buttonSix.Click += new System.EventHandler(this.buttonDigit_Click);
             // 
-            // buttonDevide
+            // buttonDiv
             // 
-            this.buttonDevide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.buttonDevide.FlatAppearance.BorderSize = 0;
-            this.buttonDevide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDevide.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDevide.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonDevide.Location = new System.Drawing.Point(474, 762);
-            this.buttonDevide.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonDevide.Name = "buttonDevide";
-            this.buttonDevide.Size = new System.Drawing.Size(139, 160);
-            this.buttonDevide.TabIndex = 0;
-            this.buttonDevide.Text = "÷";
-            this.buttonDevide.UseVisualStyleBackColor = false;
-            this.buttonDevide.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonDiv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonDiv.FlatAppearance.BorderSize = 0;
+            this.buttonDiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiv.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDiv.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonDiv.Location = new System.Drawing.Point(474, 762);
+            this.buttonDiv.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonDiv.Name = "buttonDiv";
+            this.buttonDiv.Size = new System.Drawing.Size(139, 160);
+            this.buttonDiv.TabIndex = 0;
+            this.buttonDiv.Text = "÷";
+            this.buttonDiv.UseVisualStyleBackColor = false;
+            this.buttonDiv.Click += new System.EventHandler(this.buttonSign_Click);
             // 
-            // buttonPlus
+            // buttonAdd
             // 
-            this.buttonPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.buttonPlus.FlatAppearance.BorderSize = 0;
-            this.buttonPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPlus.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPlus.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonPlus.Location = new System.Drawing.Point(474, 934);
-            this.buttonPlus.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonPlus.Name = "buttonPlus";
-            this.buttonPlus.Size = new System.Drawing.Size(139, 160);
-            this.buttonPlus.TabIndex = 0;
-            this.buttonPlus.Text = "+";
-            this.buttonPlus.UseVisualStyleBackColor = false;
-            this.buttonPlus.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonAdd.FlatAppearance.BorderSize = 0;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAdd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonAdd.Location = new System.Drawing.Point(474, 934);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(139, 160);
+            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.Text = "+";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonSign_Click);
             // 
-            // buttonMinus
+            // buttonSub
             // 
-            this.buttonMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.buttonMinus.FlatAppearance.BorderSize = 0;
-            this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinus.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonMinus.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonMinus.Location = new System.Drawing.Point(324, 1106);
-            this.buttonMinus.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMinus.Name = "buttonMinus";
-            this.buttonMinus.Size = new System.Drawing.Size(139, 160);
-            this.buttonMinus.TabIndex = 0;
-            this.buttonMinus.Text = "-";
-            this.buttonMinus.UseVisualStyleBackColor = false;
-            this.buttonMinus.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSub.FlatAppearance.BorderSize = 0;
+            this.buttonSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSub.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSub.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonSub.Location = new System.Drawing.Point(324, 1106);
+            this.buttonSub.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSub.Name = "buttonSub";
+            this.buttonSub.Size = new System.Drawing.Size(139, 160);
+            this.buttonSub.TabIndex = 0;
+            this.buttonSub.Text = "-";
+            this.buttonSub.UseVisualStyleBackColor = false;
+            this.buttonSub.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // buttonDot
             // 
@@ -340,7 +340,7 @@
             this.buttonClearLast.Name = "buttonClearLast";
             this.buttonClearLast.Size = new System.Drawing.Size(139, 160);
             this.buttonClearLast.TabIndex = 0;
-            this.buttonClearLast.Text = "<-";
+            this.buttonClearLast.Text = "⌫";
             this.buttonClearLast.UseVisualStyleBackColor = false;
             this.buttonClearLast.Click += new System.EventHandler(this.buttonClearLast_Click);
             // 
@@ -387,16 +387,16 @@
             this.Controls.Add(this.buttonDot);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.buttonClearLast);
-            this.Controls.Add(this.buttonMinus);
-            this.Controls.Add(this.buttonPlus);
+            this.Controls.Add(this.buttonSub);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonDevide);
+            this.Controls.Add(this.buttonDiv);
             this.Controls.Add(this.buttonSix);
             this.Controls.Add(this.buttonFive);
             this.Controls.Add(this.buttonFour);
-            this.Controls.Add(this.buttonMultiply);
+            this.Controls.Add(this.buttonMul);
             this.Controls.Add(this.buttonNine);
             this.Controls.Add(this.buttonEight);
             this.Controls.Add(this.buttonSeven);
@@ -418,13 +418,13 @@
         private System.Windows.Forms.Button buttonSeven;
         private System.Windows.Forms.Button buttonEight;
         private System.Windows.Forms.Button buttonNine;
-        private System.Windows.Forms.Button buttonMultiply;
+        private System.Windows.Forms.Button buttonMul;
         private System.Windows.Forms.Button buttonFour;
         private System.Windows.Forms.Button buttonFive;
         private System.Windows.Forms.Button buttonSix;
-        private System.Windows.Forms.Button buttonDevide;
-        private System.Windows.Forms.Button buttonPlus;
-        private System.Windows.Forms.Button buttonMinus;
+        private System.Windows.Forms.Button buttonDiv;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonSub;
         private System.Windows.Forms.Button buttonDot;
         private System.Windows.Forms.Button buttonEquals;
         private System.Windows.Forms.Label History;
