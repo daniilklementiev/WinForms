@@ -31,9 +31,10 @@ namespace WinForms
                 });
             
             NLog.LogManager.Configuration = nlogConfig;
-            
+            Logger logger = NLog.LogManager.GetCurrentClassLogger();
+                            
             // Run app
-            Application.Run(new Forms.Portal());
+            Application.Run(new Forms.Portal(logger));
         }
     }
 }

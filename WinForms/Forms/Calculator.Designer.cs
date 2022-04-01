@@ -55,6 +55,7 @@
             // buttonSeven
             // 
             this.buttonSeven.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonSeven.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSeven.FlatAppearance.BorderSize = 0;
             this.buttonSeven.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSeven.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -71,6 +72,7 @@
             // buttonEight
             // 
             this.buttonEight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonEight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEight.FlatAppearance.BorderSize = 0;
             this.buttonEight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEight.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -87,6 +89,7 @@
             // buttonNine
             // 
             this.buttonNine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonNine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonNine.FlatAppearance.BorderSize = 0;
             this.buttonNine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNine.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -103,22 +106,24 @@
             // buttonMul
             // 
             this.buttonMul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonMul.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonMul.FlatAppearance.BorderSize = 0;
             this.buttonMul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMul.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonMul.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonMul.Location = new System.Drawing.Point(475, 593);
+            this.buttonMul.Location = new System.Drawing.Point(474, 593);
             this.buttonMul.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMul.Name = "buttonMul";
             this.buttonMul.Size = new System.Drawing.Size(139, 160);
             this.buttonMul.TabIndex = 0;
             this.buttonMul.Text = "x";
             this.buttonMul.UseVisualStyleBackColor = false;
-            this.buttonMul.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonMul.Click += new System.EventHandler(this.buttonOperation_Click);
             // 
             // buttonFour
             // 
             this.buttonFour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonFour.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonFour.FlatAppearance.BorderSize = 0;
             this.buttonFour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFour.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -135,6 +140,7 @@
             // buttonFive
             // 
             this.buttonFive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonFive.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonFive.FlatAppearance.BorderSize = 0;
             this.buttonFive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFive.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -151,6 +157,7 @@
             // buttonSix
             // 
             this.buttonSix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonSix.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSix.FlatAppearance.BorderSize = 0;
             this.buttonSix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSix.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -167,22 +174,24 @@
             // buttonDiv
             // 
             this.buttonDiv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonDiv.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonDiv.FlatAppearance.BorderSize = 0;
             this.buttonDiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiv.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonDiv.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonDiv.Location = new System.Drawing.Point(474, 762);
+            this.buttonDiv.Location = new System.Drawing.Point(474, 420);
             this.buttonDiv.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDiv.Name = "buttonDiv";
             this.buttonDiv.Size = new System.Drawing.Size(139, 160);
             this.buttonDiv.TabIndex = 0;
             this.buttonDiv.Text = "÷";
             this.buttonDiv.UseVisualStyleBackColor = false;
-            this.buttonDiv.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonDiv.Click += new System.EventHandler(this.buttonOperation_Click);
             // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAdd.FlatAppearance.BorderSize = 0;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -194,30 +203,32 @@
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "+";
             this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.buttonOperation_Click);
             // 
             // buttonSub
             // 
             this.buttonSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSub.FlatAppearance.BorderSize = 0;
             this.buttonSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSub.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSub.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonSub.Location = new System.Drawing.Point(324, 1106);
+            this.buttonSub.Location = new System.Drawing.Point(474, 762);
             this.buttonSub.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSub.Name = "buttonSub";
             this.buttonSub.Size = new System.Drawing.Size(139, 160);
             this.buttonSub.TabIndex = 0;
             this.buttonSub.Text = "-";
             this.buttonSub.UseVisualStyleBackColor = false;
-            this.buttonSub.Click += new System.EventHandler(this.buttonSign_Click);
+            this.buttonSub.Click += new System.EventHandler(this.buttonOperation_Click);
             // 
             // buttonDot
             // 
             this.buttonDot.BackColor = System.Drawing.Color.Gray;
+            this.buttonDot.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDot.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDot.Location = new System.Drawing.Point(22, 1107);
+            this.buttonDot.Location = new System.Drawing.Point(324, 1106);
             this.buttonDot.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDot.Name = "buttonDot";
             this.buttonDot.Size = new System.Drawing.Size(139, 160);
@@ -229,6 +240,7 @@
             // buttonEquals
             // 
             this.buttonEquals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonEquals.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEquals.FlatAppearance.BorderSize = 0;
             this.buttonEquals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEquals.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -247,7 +259,7 @@
             this.History.AutoSize = true;
             this.History.BackColor = System.Drawing.Color.DimGray;
             this.History.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.History.Location = new System.Drawing.Point(342, 105);
+            this.History.Location = new System.Drawing.Point(276, 105);
             this.History.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.History.Name = "History";
             this.History.Size = new System.Drawing.Size(0, 76);
@@ -256,6 +268,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -272,6 +285,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -288,22 +302,25 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(173, 1107);
+            this.button4.Location = new System.Drawing.Point(22, 1107);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(139, 160);
+            this.button4.Size = new System.Drawing.Size(290, 160);
             this.button4.TabIndex = 0;
             this.button4.Text = "0";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.buttonDigit_Click);
             // 
             // buttonClearDisp
             // 
             this.buttonClearDisp.BackColor = System.Drawing.Color.Gray;
+            this.buttonClearDisp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonClearDisp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearDisp.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonClearDisp.Location = new System.Drawing.Point(173, 420);
@@ -318,13 +335,14 @@
             // buttonClearAll
             // 
             this.buttonClearAll.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonClearAll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonClearAll.FlatAppearance.BorderSize = 0;
             this.buttonClearAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClearAll.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonClearAll.Location = new System.Drawing.Point(323, 420);
             this.buttonClearAll.Margin = new System.Windows.Forms.Padding(0);
             this.buttonClearAll.Name = "buttonClearAll";
-            this.buttonClearAll.Size = new System.Drawing.Size(290, 160);
+            this.buttonClearAll.Size = new System.Drawing.Size(140, 160);
             this.buttonClearAll.TabIndex = 0;
             this.buttonClearAll.Text = "C";
             this.buttonClearAll.UseVisualStyleBackColor = false;
@@ -333,8 +351,9 @@
             // buttonClearLast
             // 
             this.buttonClearLast.BackColor = System.Drawing.Color.Gray;
+            this.buttonClearLast.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonClearLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClearLast.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonClearLast.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonClearLast.Location = new System.Drawing.Point(22, 420);
             this.buttonClearLast.Margin = new System.Windows.Forms.Padding(0);
             this.buttonClearLast.Name = "buttonClearLast";
@@ -347,6 +366,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

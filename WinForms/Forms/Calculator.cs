@@ -14,29 +14,32 @@ namespace WinForms.Forms
 {
     public partial class Calculator : Form
     {
-        private static Logger logger;
+        private readonly Logger _logger;
         private Operations operation; // Saved operation after push button
-        public Calculator()
+        private int firstArg; // Saved value after operation button
+        public Calculator(NLog.Logger logger)
         {
             InitializeComponent();
             operation = Operations.None;
-            logger = LogManager.GetCurrentClassLogger(); // привязка логгера
+            _logger = logger; // привязка логгера
+            remember = false;
         }
         public static bool BlockOperator { get; set; }
 
+        private bool remember;
         static Calculator()
         {
             BlockOperator = true;
-            logger = LogManager.GetCurrentClassLogger(); // привязка логгера
         }
-        
-        private void Calculator_Load(object sender, EventArgs e)
+
+
+        private void buttonOperation_Click(object sender, EventArgs e)
         {
             var clickedButton = sender as Button;
             if (clickedButton == null)
             {
                 // Exception: invalid sender. Log'em it
-                logger.Error("Invalid sender"); 
+                _logger.Error("Invalid sender" + sender);
                 return;
             }
 
@@ -47,19 +50,53 @@ namespace WinForms.Forms
             else
             {
                 // Exception: invalid button. Log'em it
-                logger.Error("Invalid button clicked");
+                _logger.Error("Invalid button clicked {0}", sender.ToString());
                 return;
             }
-        }
-        private void buttonOperatin_Click(object sender, EventArgs e)
-        {
 
+            // Update Top label
+            History.Text = richTextBox.Text + " " + clickedButton.Text;
+            // Remember first argument
+            firstArg = Convert.ToInt32(richTextBox.Text);
+            // Clear display to enter next number
+            richTextBox.Text = firstArg.ToString();
+            remember = true;
         }
+
+        /** Event handler for '=' button
+         */
         private void buttonEquals_Click(object sender, EventArgs e)
         {
-            var answer = new DataTable().Compute(richTextBox.Text.Replace('x', '*').Replace('÷', '/'), null);
+            /*var answer = new DataTable().Compute(richTextBox.Text.Replace('x', '*').Replace('÷', '/'), null);
             History.Text = richTextBox.Text;
-            richTextBox.Text = answer.ToString();
+            richTextBox.Text = answer.ToString();*/
+
+            int secondArg = Convert.ToInt32(richTextBox.Text);
+            float res = 0;
+            switch (operation)
+            {
+                case Operations.None:
+                    MessageBox.Show("No operation");
+                    return;
+                case Operations.Add:
+                    res = firstArg + secondArg;
+                    break;
+                case Operations.Sub:
+                    res = firstArg - secondArg;
+                    break;
+                case Operations.Mul:
+                    res = firstArg * secondArg;
+                    break;
+                case Operations.Div: 
+                    res = (float)firstArg / secondArg;
+                    break;
+            }
+            // Update Top Label 
+            History.Text += " " + secondArg + " =";
+            // Show result
+            richTextBox.Text = res.ToString();
+            // Clear operation
+            operation = Operations.None;
         }
 
         private void buttonSign_Click(object sender, EventArgs e)
@@ -74,7 +111,7 @@ namespace WinForms.Forms
             {
                 if (richTextBox.Text.StartsWith("-"))
                 {
-                    richTextBox.Text=richTextBox.Text.Substring(1);
+                    richTextBox.Text = richTextBox.Text.Substring(1);
                 }
                 else
                 {
@@ -91,14 +128,15 @@ namespace WinForms.Forms
         private void buttonDigit_Click(object sender, EventArgs e)
         {
             var clicked = sender as Button;
+            
             if (clicked == null)
             {
                 return;
             }
-
-            if (richTextBox.Text.Equals("0"))
+            if (richTextBox.Text.Equals("0") || remember == true)
             {
                 richTextBox.Text = "";
+                remember = false;
             }
 
             richTextBox.Text += clicked.Text;
@@ -125,6 +163,19 @@ namespace WinForms.Forms
         {
             richTextBox.Text = "0";
             History.Text = String.Empty;
+        }
+
+        private void Calculator_Load(object sender, EventArgs e)
+        {
+            History.Text = String.Empty;
+            foreach(var cont in Controls)
+            {
+                var b = cont as Button;
+                if (b != null)
+                {
+                    b.Click += (sender, e) => this.ActiveControl = null;
+                }
+            }
         }
     }
 
