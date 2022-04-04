@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NLog;
+using Microsoft.Practices.Unity;
+
 namespace WinForms.Forms
 {
     public partial class Portal : Form
@@ -27,6 +29,11 @@ namespace WinForms.Forms
         private void Calculator_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             new Calculator(_logger).ShowDialog();
+        }
+
+        private void Progress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Program.Container.Resolve<Forms.ProgressForm>().ShowDialog();
         }
     }
 }

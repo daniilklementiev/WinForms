@@ -42,3 +42,8 @@ C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\ref\WinForm
 C:\Users\daniil\Source\Repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.Calculator.resources
 C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\NLog.dll
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.csproj.CopyComplete
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\Microsoft.Practices.ServiceLocation.dll
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\Microsoft.Practices.Unity.dll
+C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.ProgressForm.resources

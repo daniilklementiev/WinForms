@@ -30,15 +30,17 @@
         {
             this.Intro = new System.Windows.Forms.LinkLabel();
             this.Calculator = new System.Windows.Forms.LinkLabel();
+            this.progressLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
             // 
             this.Intro.AutoSize = true;
-            this.Intro.Font = new System.Drawing.Font("Monument Extended", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Intro.Location = new System.Drawing.Point(12, 41);
+            this.Intro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Intro.Location = new System.Drawing.Point(22, 87);
+            this.Intro.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Intro.Name = "Intro";
-            this.Intro.Size = new System.Drawing.Size(88, 25);
+            this.Intro.Size = new System.Drawing.Size(104, 48);
             this.Intro.TabIndex = 0;
             this.Intro.TabStop = true;
             this.Intro.Text = "Intro";
@@ -47,22 +49,38 @@
             // Calculator
             // 
             this.Calculator.AutoSize = true;
-            this.Calculator.Font = new System.Drawing.Font("Monument Extended", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Calculator.Location = new System.Drawing.Point(12, 78);
+            this.Calculator.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Calculator.Location = new System.Drawing.Point(22, 174);
+            this.Calculator.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Calculator.Name = "Calculator";
-            this.Calculator.Size = new System.Drawing.Size(174, 25);
+            this.Calculator.Size = new System.Drawing.Size(209, 48);
             this.Calculator.TabIndex = 0;
             this.Calculator.TabStop = true;
             this.Calculator.Text = "Calculator";
             this.Calculator.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Calculator_LinkClicked);
             // 
+            // progressLink
+            // 
+            this.progressLink.AutoSize = true;
+            this.progressLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.progressLink.Location = new System.Drawing.Point(22, 256);
+            this.progressLink.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.progressLink.Name = "progressLink";
+            this.progressLink.Size = new System.Drawing.Size(187, 48);
+            this.progressLink.TabIndex = 0;
+            this.progressLink.TabStop = true;
+            this.progressLink.Text = "Progress";
+            this.progressLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Progress_LinkClicked);
+            // 
             // Portal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.progressLink);
             this.Controls.Add(this.Calculator);
             this.Controls.Add(this.Intro);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Portal";
             this.Text = "Portal";
             this.ResumeLayout(false);
@@ -74,5 +92,6 @@
 
         private System.Windows.Forms.LinkLabel Intro;
         private System.Windows.Forms.LinkLabel Calculator;
+        private System.Windows.Forms.LinkLabel progressLink;
     }
 }
