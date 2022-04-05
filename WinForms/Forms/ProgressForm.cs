@@ -72,10 +72,12 @@ namespace WinForms.Forms
                 this.Invoke((Action)UpdateProgress);
                 Thread.Sleep(((int)_progressTime) * 10);
                 //if (_stopPressed) break;
+                // Проверка токена
                 if (token.IsCancellationRequested) 
                 {
                     break;
                 }
+                // Прогресс бар достиг максимума - обнуление и мбокс
                 if (_progressState == progressBar1.Maximum)
                 {
                     MessageBox.Show("Done");
@@ -89,6 +91,7 @@ namespace WinForms.Forms
             }
         }
 
+        // Откат прогресс бара
         private void RollbackHandler(object obj)
         {
             //  _stopPressed = false;
@@ -104,6 +107,7 @@ namespace WinForms.Forms
                 {
                     break;
                 }
+                // Прогресс бар достиг минимума
                 if(_progressState == progressBar1.Minimum)
                 {
                     MessageBox.Show("Cancelled");
@@ -117,18 +121,20 @@ namespace WinForms.Forms
             
         }
 
+        // Метод для кпноки старта
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            _rollback = false;
-            _progressState = progressBar1.Minimum;
             cts = new CancellationTokenSource();
+            _rollback = false;
+            _stopped = false;
+            _progressState = progressBar1.Minimum;
             buttonContinue.Visible = false;
             buttonRollback.Visible = false;
             buttonStart.Visible = false;
             buttonStop.Visible = true;
-            _stopped = false;
             Task.Run(() => StartHandler(cts.Token));
         }
+        // Метод для кнопки "Продолжить"
         private void buttonContinue_Click(object sender, EventArgs e)
         {
             cts = new CancellationTokenSource();
@@ -140,6 +146,7 @@ namespace WinForms.Forms
             Task.Run(() => StartHandler(cts.Token));
         }
 
+        // Метод для кнопки "Откат"
         private void buttonRollback_Click(object sender, EventArgs e)
         {
             cts = new CancellationTokenSource();
@@ -151,8 +158,10 @@ namespace WinForms.Forms
             _stopped = false;
             Task.Run(() => RollbackHandler(cts.Token));
         }
+        // Метод для кнопки "Стоп"
         private void buttonStop_Click(object sender, EventArgs e)
         {
+            // проверка на двойной стоп - отмена полная
             if (_stopped) 
             { 
                 progressBar1.Value = progressBar1.Minimum;
