@@ -1,1 +1,9 @@
 2022-03-31 16:26:23.0404|ERROR|WinForms.Forms.Calculator|Invalid sender
+2022-04-05 08:48:08.1620|WARN|WinForms.Program|System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Convert.ToSingle(String value)
+   at WinForms.Forms.ProgressForm.buttonAdd_Click(Object sender, EventArgs e) in C:\Users\daniil\source\repos\Forms\WinForms\Forms\ProgressForm.cs:line 80
+2022-04-05 08:49:57.0015|WARN|WinForms.Program|System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Convert.ToSingle(String value)
+   at WinForms.Forms.ProgressForm.buttonAdd_Click(Object sender, EventArgs e) in C:\Users\daniil\source\repos\Forms\WinForms\Forms\ProgressForm.cs:line 82

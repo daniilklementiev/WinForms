@@ -75,16 +75,19 @@ namespace WinForms.Forms
             String content = String.Empty;
             if (comboBoxTime.Text.Contains("."))
                 content = comboBoxTime.Text.Replace('.', ',');
+            else content = comboBoxTime.Text;
+
             try
             {
                 float res = Convert.ToSingle(content);
                 if (res < 10 && res > 0)
                     comboBoxTime.Items.Add(content);
-                else throw new Exception("Инвалид инпут! Введите дробное число от 0 до 10");
+                else MessageBox.Show("Инвалид инпут! Введите дробное число от 0 до 10");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                _logger.Warn(ex);
+                MessageBox.Show("Инвалид инпут! Введите дробное число от 0 до 10");
             }  
         }
     }

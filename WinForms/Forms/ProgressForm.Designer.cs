@@ -146,7 +146,7 @@
         }
 
         #endregion
-
+        
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStop;
