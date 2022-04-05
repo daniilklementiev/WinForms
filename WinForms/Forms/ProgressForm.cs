@@ -83,6 +83,8 @@ namespace WinForms.Forms
                     buttonRollback.Visible = false;
                     buttonStart.Visible = true;
                     buttonStop.Visible = false;
+                    Thread.Sleep(1000);
+                    progressBar1.Value = progressBar1.Minimum;
                 }
             }
         }
@@ -109,6 +111,7 @@ namespace WinForms.Forms
                     buttonRollback.Visible = false;
                     buttonStart.Visible = true;
                     buttonStop.Visible = false;
+                    progressBar1.Value = progressBar1.Minimum;
                 }
             }
             
@@ -117,7 +120,7 @@ namespace WinForms.Forms
         private void buttonStart_Click(object sender, EventArgs e)
         {
             _rollback = false;
-            _progressState = 0;
+            _progressState = progressBar1.Minimum;
             cts = new CancellationTokenSource();
             buttonContinue.Visible = false;
             buttonRollback.Visible = false;
@@ -152,7 +155,7 @@ namespace WinForms.Forms
         {
             if (_stopped) 
             { 
-                progressBar1.Value = 0;
+                progressBar1.Value = progressBar1.Minimum;
                 _stopped = false;
                 buttonContinue.Visible = false;
                 buttonRollback.Visible = false;
