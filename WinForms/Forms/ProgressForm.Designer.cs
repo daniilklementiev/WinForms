@@ -35,20 +35,21 @@
             this.listBoxStyle = new System.Windows.Forms.ListBox();
             this.comboBoxTime = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.timeEllapsedLabel = new System.Windows.Forms.RichTextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonContinue = new System.Windows.Forms.Button();
+            this.buttonRollback = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(141, 36);
+            this.progressBar1.Location = new System.Drawing.Point(101, 36);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(578, 46);
+            this.progressBar1.Size = new System.Drawing.Size(656, 46);
             this.progressBar1.TabIndex = 0;
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(141, 102);
+            this.buttonStart.Location = new System.Drawing.Point(101, 102);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(150, 46);
             this.buttonStart.TabIndex = 1;
@@ -58,12 +59,14 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(569, 102);
+            this.buttonStop.Location = new System.Drawing.Point(607, 102);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(150, 46);
             this.buttonStop.TabIndex = 2;
             this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Visible = false;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // label1
             // 
@@ -105,14 +108,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Bar time";
             // 
-            // timeEllapsedLabel
-            // 
-            this.timeEllapsedLabel.Location = new System.Drawing.Point(297, 106);
-            this.timeEllapsedLabel.Name = "timeEllapsedLabel";
-            this.timeEllapsedLabel.Size = new System.Drawing.Size(266, 42);
-            this.timeEllapsedLabel.TabIndex = 7;
-            this.timeEllapsedLabel.Text = "";
-            // 
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(743, 216);
@@ -123,13 +118,36 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // buttonContinue
+            // 
+            this.buttonContinue.Location = new System.Drawing.Point(267, 102);
+            this.buttonContinue.Name = "buttonContinue";
+            this.buttonContinue.Size = new System.Drawing.Size(150, 46);
+            this.buttonContinue.TabIndex = 9;
+            this.buttonContinue.Text = "Continue";
+            this.buttonContinue.UseVisualStyleBackColor = true;
+            this.buttonContinue.Visible = false;
+            this.buttonContinue.Click += new System.EventHandler(this.buttonContinue_Click);
+            // 
+            // buttonRollback
+            // 
+            this.buttonRollback.Location = new System.Drawing.Point(433, 102);
+            this.buttonRollback.Name = "buttonRollback";
+            this.buttonRollback.Size = new System.Drawing.Size(150, 46);
+            this.buttonRollback.TabIndex = 10;
+            this.buttonRollback.Text = "Rollback";
+            this.buttonRollback.UseVisualStyleBackColor = true;
+            this.buttonRollback.Visible = false;
+            this.buttonRollback.Click += new System.EventHandler(this.buttonRollback_Click);
+            // 
             // ProgressForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 500);
+            this.Controls.Add(this.buttonRollback);
+            this.Controls.Add(this.buttonContinue);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.timeEllapsedLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxTime);
             this.Controls.Add(this.listBoxStyle);
@@ -154,7 +172,8 @@
         private System.Windows.Forms.ListBox listBoxStyle;
         private System.Windows.Forms.ComboBox comboBoxTime;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox timeEllapsedLabel;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonContinue;
+        private System.Windows.Forms.Button buttonRollback;
     }
 }

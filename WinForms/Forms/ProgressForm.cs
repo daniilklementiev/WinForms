@@ -17,11 +17,18 @@ namespace WinForms.Forms
         private readonly NLog.Logger _logger;
         private readonly Random      _random;
         private          float       _progressTime;
+        // private          bool        _stopPressed;
+        private          int         _progressState;
+        private          bool        _rollback;
+
+        private CancellationTokenSource cts;
         public ProgressForm(NLog.Logger logger, Random random)
         {
             _logger = logger;
             _random = random;
+            cts = null!;
             InitializeComponent();
+
         }
         private void ProgressForm_Load(object sender, EventArgs e)
         {
@@ -48,18 +55,91 @@ namespace WinForms.Forms
 
 
         }
+        private void UpdateProgress()
+        {
+            progressBar1.Value = _progressState;
+        }
+        // Метод запуска по кнопке "Старт"
+        private void StartHandler(object obj)
+        {
+            //  _stopPressed = false;
+            if (obj is not CancellationToken) return;
+            CancellationToken token = (CancellationToken)obj;
+            for (int i = _progressState; i <= progressBar1.Maximum; i++)
+            {
+                _progressState = i;
+                this.Invoke((Action)UpdateProgress);
+                Thread.Sleep(((int)_progressTime) * 10);
+                //if (_stopPressed) break;
+                if (token.IsCancellationRequested) 
+                {
+                    break;
+                }
+            }
+        }
+
+        private void RollbackHandler(object obj)
+        {
+            //  _stopPressed = false;
+            if (obj is not CancellationToken) return;
+            CancellationToken token = (CancellationToken)obj;
+            for (int i = _progressState; i >= progressBar1.Minimum; i--)
+            {
+                _progressState = i;
+                this.Invoke((Action)UpdateProgress);
+                Thread.Sleep(((int)_progressTime) * 10);
+                //if (_stopPressed) break;
+                if (token.IsCancellationRequested)
+                {
+                    break;
+                }
+            }
+            MessageBox.Show("Done");
+            buttonContinue.Visible = false;
+            buttonRollback.Visible = false;
+            buttonStart.Visible = true;
+            buttonStop.Visible = false;
+        }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            for (int i = 0; i < progressBar1.Maximum; i++)
-            {
-                progressBar1.Value = i;
-                timeEllapsedLabel.Text = sw.Elapsed.ToString();
-                Thread.Sleep(((int)_progressTime)*10);
-            }
-            sw.Stop();
+            _rollback = false;
+            _progressState = 0;
+            cts = new CancellationTokenSource();
+            buttonContinue.Visible = false;
+            buttonRollback.Visible = false;
+            buttonStart.Visible = false;
+            buttonStop.Visible = true;
+            Task.Run(() => StartHandler(cts.Token));
+        }
+        private void buttonContinue_Click(object sender, EventArgs e)
+        {
+            cts = new CancellationTokenSource();
+            buttonContinue.Visible = false;
+            buttonRollback.Visible = false;
+            buttonStart.Visible = false;
+            buttonStop.Visible = true;
+            Task.Run(() => StartHandler(cts.Token));
+        }
+
+        private void buttonRollback_Click(object sender, EventArgs e)
+        {
+            cts = new CancellationTokenSource();
+            buttonContinue.Visible = false;
+            buttonRollback.Visible = false;
+            buttonStart.Visible = false;
+            buttonStop.Visible = false;
+            _rollback = true;
+            Task.Run(() => RollbackHandler(cts.Token));
+        }
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            // _stopPressed = true;
+            buttonContinue.Visible = true;
+            buttonRollback.Visible = true;
+            buttonStart.Visible = true;
+            buttonStop.Visible = false;
+            cts?.Cancel();
         }
 
         private void comboBoxTime_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,24 +152,30 @@ namespace WinForms.Forms
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            // Создаем строку для контента из комбобокса
             String content = String.Empty;
+            // Проверяем: если есть точка - меняем на запятую
             if (comboBoxTime.Text.Contains("."))
                 content = comboBoxTime.Text.Replace('.', ',');
             else content = comboBoxTime.Text;
 
             try
             {
+                // конвертируем в флоат 
                 float res = Convert.ToSingle(content);
+                // проверка на допустимые значения
                 if (res < 10 && res > 0)
                     comboBoxTime.Items.Add(content);
                 else MessageBox.Show("Инвалид инпут! Введите дробное число от 0 до 10");
             }
-            catch (Exception ex)
+            catch (Exception ex) // обработка исключения
             {
                 _logger.Warn(ex);
                 MessageBox.Show("Инвалид инпут! Введите дробное число от 0 до 10");
             }  
         }
+
+        
     }
     class BarStyle
     {
