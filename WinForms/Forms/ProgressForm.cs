@@ -20,6 +20,7 @@ namespace WinForms.Forms
         // private          bool        _stopPressed;
         private          int         _progressState;
         private          bool        _rollback;
+        private          bool        _stopped;
 
         private CancellationTokenSource cts;
         public ProgressForm(NLog.Logger logger, Random random)
@@ -75,6 +76,14 @@ namespace WinForms.Forms
                 {
                     break;
                 }
+                if (_progressState == progressBar1.Maximum)
+                {
+                    MessageBox.Show("Done");
+                    buttonContinue.Visible = false;
+                    buttonRollback.Visible = false;
+                    buttonStart.Visible = true;
+                    buttonStop.Visible = false;
+                }
             }
         }
 
@@ -93,12 +102,16 @@ namespace WinForms.Forms
                 {
                     break;
                 }
+                if(_progressState == progressBar1.Minimum)
+                {
+                    MessageBox.Show("Cancelled");
+                    buttonContinue.Visible = false;
+                    buttonRollback.Visible = false;
+                    buttonStart.Visible = true;
+                    buttonStop.Visible = false;
+                }
             }
-            MessageBox.Show("Done");
-            buttonContinue.Visible = false;
-            buttonRollback.Visible = false;
-            buttonStart.Visible = true;
-            buttonStop.Visible = false;
+            
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -110,6 +123,7 @@ namespace WinForms.Forms
             buttonRollback.Visible = false;
             buttonStart.Visible = false;
             buttonStop.Visible = true;
+            _stopped = false;
             Task.Run(() => StartHandler(cts.Token));
         }
         private void buttonContinue_Click(object sender, EventArgs e)
@@ -119,6 +133,7 @@ namespace WinForms.Forms
             buttonRollback.Visible = false;
             buttonStart.Visible = false;
             buttonStop.Visible = true;
+            _stopped = false;
             Task.Run(() => StartHandler(cts.Token));
         }
 
@@ -130,16 +145,31 @@ namespace WinForms.Forms
             buttonStart.Visible = false;
             buttonStop.Visible = false;
             _rollback = true;
+            _stopped = false;
             Task.Run(() => RollbackHandler(cts.Token));
         }
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            // _stopPressed = true;
-            buttonContinue.Visible = true;
-            buttonRollback.Visible = true;
-            buttonStart.Visible = true;
-            buttonStop.Visible = false;
-            cts?.Cancel();
+            if (_stopped) 
+            { 
+                progressBar1.Value = 0;
+                _stopped = false;
+                buttonContinue.Visible = false;
+                buttonRollback.Visible = false;
+                buttonStart.Visible = true;
+                buttonStop.Visible = false;
+            }
+            else 
+            {
+                // _stopPressed = true;
+                buttonContinue.Visible = true;
+                buttonRollback.Visible = true;
+                buttonStart.Visible = false;
+                buttonStop.Visible = true;
+                _stopped = true;
+                cts?.Cancel();
+            }
+            
         }
 
         private void comboBoxTime_SelectedIndexChanged(object sender, EventArgs e)
