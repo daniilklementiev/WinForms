@@ -22,14 +22,7 @@ namespace WinForms.Forms
         private void Game2048_Load(object sender, EventArgs e)
         {
             panelGameField.BackColor = Color.FromArgb(0xBB, 0xAD, 0xA0);
-            // ColorCells();
-            // AddCell();
-            // ColorCells();
             ClearGameField();
-            AddCell();
-            AddCell();
-            ColorCells();
-            this.ActiveControl = null;
         }
         /// <summary>
         /// Clear all field cells
@@ -40,6 +33,9 @@ namespace WinForms.Forms
             {
                 if (control is Label lbl) lbl.Text = "0";
             }
+            AddCell();
+            AddCell();
+            ColorCells();
         }
 
         /// <summary>
@@ -64,6 +60,16 @@ namespace WinForms.Forms
             if(emptyIndexes.Count == 0)
             {
                 // Game over
+                //string gameOver = "Game over. Play again?";
+                //string caption = "Game Over";
+                //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                //var result = MessageBox.Show(gameOver, caption, buttons);
+                //if (result == DialogResult.Yes)
+                //{
+                //    ClearGameField();
+                //}
+                //else Close();
+                //
                 return;
             }
             // random cell from empty
