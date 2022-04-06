@@ -31,6 +31,7 @@
             this.Intro = new System.Windows.Forms.LinkLabel();
             this.Calculator = new System.Windows.Forms.LinkLabel();
             this.progressLink = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2048 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -72,15 +73,29 @@
             this.progressLink.Text = "Progress";
             this.progressLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Progress_LinkClicked);
             // 
+            // linkLabel2048
+            // 
+            this.linkLabel2048.AutoSize = true;
+            this.linkLabel2048.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabel2048.Location = new System.Drawing.Point(22, 330);
+            this.linkLabel2048.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabel2048.Name = "linkLabel2048";
+            this.linkLabel2048.Size = new System.Drawing.Size(688, 48);
+            this.linkLabel2048.TabIndex = 0;
+            this.linkLabel2048.TabStop = true;
+            this.linkLabel2048.Text = "Cобытия и взаимодействия (2048)";
+            this.linkLabel2048.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2048_LinkClicked);
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkLabel2048);
             this.Controls.Add(this.progressLink);
             this.Controls.Add(this.Calculator);
             this.Controls.Add(this.Intro);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Portal";
             this.Text = "Portal";
             this.ResumeLayout(false);
@@ -93,5 +108,6 @@
         private System.Windows.Forms.LinkLabel Intro;
         private System.Windows.Forms.LinkLabel Calculator;
         private System.Windows.Forms.LinkLabel progressLink;
+        private System.Windows.Forms.LinkLabel linkLabel2048;
     }
 }

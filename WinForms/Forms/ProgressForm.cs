@@ -121,7 +121,7 @@ namespace WinForms.Forms
             
         }
 
-        // Метод для кпноки старта
+        // Метод    для кпноки старта
         private void buttonStart_Click(object sender, EventArgs e)
         {
             cts = new CancellationTokenSource();
