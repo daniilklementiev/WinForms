@@ -287,10 +287,10 @@ namespace WinForms.Forms
                     }
                 }
                 // Shift
-                for (int i = 1; i < 3; ++i)
+                for (int i = 3; i < 1; --i)
                 {
                     Label lbl1 = LabelAt(i, j);
-                    Label lbl2 = LabelAt(i + 1, j);
+                    Label lbl2 = LabelAt(i - 1, j);
                     if (lbl1.Text == "0" && lbl2.Text != "0")
                     {
                         lbl1.Text = lbl2.Text;
@@ -304,7 +304,37 @@ namespace WinForms.Forms
         }
         private bool MoveDown()
         {
-            return true;
+            bool wasMove = false;
+            // Shift all non-empty cells to up
+            for (int j = 0; j < 4; j++) // columns
+            {
+                for (int k = 0; k < 3; k++)
+                    for (int i = 3; i > 0; --i)
+                    {
+                        Label lbl1 = LabelAt(i, j);
+                        Label lbl2 = LabelAt(i - 1, j);
+                        if (lbl1.Text == "0" && lbl2.Text != "0")
+                        {
+                            lbl1.Text = lbl2.Text;
+                            lbl2.Text = "0";
+                            wasMove = true;
+                        }
+                    }
+                // Collapse
+                for (int i = 3; i > 0; --i)
+                {
+                    Label lbl1 = LabelAt(i, j);
+                    Label lbl2 = LabelAt(i - 1, j);
+                    if (lbl1.Text == lbl2.Text && lbl2.Text != "0")
+                    {
+                        lbl1.Text = (int.Parse(lbl1.Text) * 2).ToString();
+                        lbl2.Text = "0";
+                        i--;
+                        wasMove = true;
+                    }
+                }
+            }
+            return wasMove;
         }
 
         private Label LabelAt(int i, int j)
