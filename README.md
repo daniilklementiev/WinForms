@@ -1,2 +1,2 @@
 # WinForms
-![Скриншот приложения](github.com/daniilklementiev/WinForms/raw/master/image.png)
+![Скриншот приложения](https://github.com/daniilklementiev/WinForms/raw/master/image.png)
