@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game2048));
             this.panelGameField = new System.Windows.Forms.Panel();
             this.cell33 = new System.Windows.Forms.Label();
             this.cell23 = new System.Windows.Forms.Label();
@@ -51,8 +52,10 @@
             this.panelSensor = new System.Windows.Forms.Panel();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.timerAnim = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGameField.SuspendLayout();
             this.panelDisplay.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelGameField
@@ -240,6 +243,7 @@
             // 
             // panelDisplay
             // 
+            this.panelDisplay.Controls.Add(this.pictureBox1);
             this.panelDisplay.Controls.Add(this.labelTime);
             this.panelDisplay.Location = new System.Drawing.Point(25, 24);
             this.panelDisplay.Name = "panelDisplay";
@@ -275,6 +279,16 @@
             // 
             this.timerAnim.Tick += new System.EventHandler(this.timerAnim_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WinForms.Properties.Resources.picture2048;
+            this.pictureBox1.Location = new System.Drawing.Point(-57, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(280, 140);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // Game2048
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -283,6 +297,7 @@
             this.Controls.Add(this.panelSensor);
             this.Controls.Add(this.panelDisplay);
             this.Controls.Add(this.panelGameField);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Game2048";
             this.Text = "Game2048";
             this.Load += new System.EventHandler(this.Game2048_Load);
@@ -290,6 +305,7 @@
             this.panelGameField.ResumeLayout(false);
             this.panelDisplay.ResumeLayout(false);
             this.panelDisplay.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -318,5 +334,6 @@
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Timer timerClock;
         private System.Windows.Forms.Timer timerAnim;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
