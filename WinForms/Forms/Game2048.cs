@@ -471,7 +471,9 @@ namespace WinForms.Forms
                 if (Convert.ToInt32(l.Text) % 2 == 0 && l.Text != "0")
                 {
                     l.BackColor = Color.FromArgb(animTick * 10, l.BackColor);
-                    l.Font = new Font(l.Font.FontFamily, animTick / 2 + 5);
+                    //l.Font = new Font(l.Font.FontFamily, 18);
+                    l.Font = new Font(l.Font.FontFamily, animTick / 2 + 10, FontStyle.Bold);
+                    //l.Font = new Font(l.Font.FontFamily, animTick * 2 + 1);
                 }
             }
             animTick++;
