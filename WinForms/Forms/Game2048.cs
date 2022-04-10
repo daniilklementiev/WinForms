@@ -13,18 +13,19 @@ namespace WinForms.Forms
     public partial class Game2048 : Form
     {
         private readonly Random _random;
-        private int timeMs;             // Game time in milliseconds
-        private int animTick;           // ticks count for animation timer
-        private Label appearLabel;      // ref to Label(cell);
-        private List<Label> appearLabelsList { get; set; } // labels list to animate
+        private int timeMs;                                 // Game time in milliseconds
+        private int animTick;                               // ticks count for animation timer
+        private Label appearLabel;                          // ref to Label(cell);
+        private List<Label> appearLabelsList { get; set; }  // labels list to animate
+        private List<Label> oldLabelsList { get; set; }     // old labels list
         public Game2048(Random random)
         {
             InitializeComponent();
-            appearLabel = null!;
-            _random = random;
-            appearLabelsList = new List<Label>(); // creating label list
+            appearLabel      = null!;               // nullable animate label (old)
+            _random          = random;              // creating random variable
+            appearLabelsList = new List<Label>();   // creating label list
+            oldLabelsList    = new List<Label>();   // creating old label list
         }
-
         private void Game2048_Load(object sender, EventArgs e)
         {
             panelGameField.BackColor = Color.FromArgb(0xBB, 0xAD, 0xA0);
@@ -35,7 +36,6 @@ namespace WinForms.Forms
 
             
         }
-
 
         /// <summary>
         /// Clear all field cells
@@ -50,7 +50,7 @@ namespace WinForms.Forms
             AddCell();
             ColorCells();
         }
-        
+
         private void GameOverCheck()
         {
             List<Label> emptyIndexes = new List<Label>();
@@ -103,18 +103,17 @@ namespace WinForms.Forms
 
             // Appearance animation
             appearLabel = lbl;
-            
-        }
 
+        }
         /// <summary>
         /// Change colors by values
         /// </summary>
         private void ColorCells()
         {
-            foreach(var control in panelGameField.Controls)
+            foreach (var control in panelGameField.Controls)
             {
                 var lbl = control as Label;
-                if(lbl != null)
+                if (lbl != null)
                 {
                     switch (lbl.Text)
                     {
@@ -175,7 +174,9 @@ namespace WinForms.Forms
                 }
             }
         }
-
+        /// <summary>
+        /// processing keydown event
+        /// </summary>
         private void Game2048_KeyDown(object sender, KeyEventArgs e)
         {
             // MessageBox.Show(e.KeyCode.ToString());
@@ -195,6 +196,7 @@ namespace WinForms.Forms
             }
         }
 
+        // methods for cell moving
         private bool MoveLeft()
         {
             bool wasMove = false;
@@ -443,6 +445,9 @@ namespace WinForms.Forms
             return (Label)panelGameField.Controls.Find("cell" + i + j, false)[0];
         }
 
+        /// <summary>
+        /// processing clock timer (classwork example)
+        /// </summary>
         private void timerClock_Tick(object sender, EventArgs e)
         {
             timeMs += timerClock.Interval; // add interval to total time
@@ -457,6 +462,9 @@ namespace WinForms.Forms
             labelTime.Text = $"{hours}:{min}:{sec}";
         }
 
+        /// <summary>
+        /// processing animation timer
+        /// </summary>
         private void timerAnim_Tick(object sender, EventArgs e)
         {
             var animData = appearLabel?.Tag as AnimData;
@@ -471,9 +479,10 @@ namespace WinForms.Forms
                 if (Convert.ToInt32(l.Text) % 2 == 0 && l.Text != "0")
                 {
                     l.BackColor = Color.FromArgb(animTick * 10, l.BackColor);
-                    //l.Font = new Font(l.Font.FontFamily, 18);
-                    l.Font = new Font(l.Font.FontFamily, animTick / 2 + 10, FontStyle.Bold);
-                    //l.Font = new Font(l.Font.FontFamily, animTick * 2 + 1);
+                    // pulsating for text in cell
+                    l.Font = new Font(l.Font.FontFamily, 18); // from 1 unit
+                    // l.Font = new Font(l.Font.FontFamily, 18 - animTick / 2, FontStyle.Bold); // reduction
+                    l.Font = new Font(l.Font.FontFamily, animTick / 2 + 10, FontStyle.Bold); // increasing
                 }
             }
             animTick++;
@@ -539,10 +548,7 @@ namespace WinForms.Forms
         }
 
         #endregion
-
-
     }
-
     class AnimData  // Data for Control's animation
     {
         public Color BackColor { get; set; }

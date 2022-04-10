@@ -273,7 +273,6 @@
             // 
             // timerAnim
             // 
-            this.timerAnim.Interval = 20;
             this.timerAnim.Tick += new System.EventHandler(this.timerAnim_Tick);
             // 
             // Game2048
