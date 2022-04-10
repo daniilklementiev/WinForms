@@ -21,10 +21,10 @@ namespace WinForms.Forms
         public Game2048(Random random)
         {
             InitializeComponent();
-            appearLabel      = null!;               // nullable animate label (old)
-            _random          = random;              // creating random variable
+            appearLabel = null!;                    // nullable animate label (old)
+            _random = random;                       // creating random variable
             appearLabelsList = new List<Label>();   // creating label list
-            oldLabelsList    = new List<Label>();   // creating old label list
+            oldLabelsList = new List<Label>();      // creating old label list
         }
         private void Game2048_Load(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace WinForms.Forms
             timeMs = 0;
             timerClock.Start();  // Start timer for Clock
 
-            
+
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace WinForms.Forms
         /// </summary>
         private void AddCell()
         {
-    
+
             // Looking for empty cells
             List<Label> emptyIndexes = new List<Label>();
             Label? lbl;
@@ -88,8 +88,8 @@ namespace WinForms.Forms
                 for (int j = 0; j < 4; j++)
                 {
                     String name = "cell" + i + j;
-                    lbl =panelGameField.Controls.Find("cell" + i + j, false)[0] as Label;
-                    if(lbl.Text == "0")
+                    lbl = panelGameField.Controls.Find("cell" + i + j, false)[0] as Label;
+                    if (lbl.Text == "0")
                     {
                         emptyIndexes.Add(lbl);
                     }
@@ -180,23 +180,23 @@ namespace WinForms.Forms
         private void Game2048_KeyDown(object sender, KeyEventArgs e)
         {
             // MessageBox.Show(e.KeyCode.ToString());
-            switch(e.KeyCode)
+            switch (e.KeyCode)
             {
-                case Keys.Left:  MakeMove(Directions.Left);  GameOverCheck(); break;
-                case Keys.Right: MakeMove(Directions.Right); GameOverCheck(); break;  
-                case Keys.Up:    MakeMove(Directions.Up);    GameOverCheck(); break; 
-                case Keys.Down:  MakeMove(Directions.Down);  GameOverCheck(); break; 
-                case Keys.A:     MakeMove(Directions.Left);  GameOverCheck(); break; 
-                case Keys.D:     MakeMove(Directions.Right); GameOverCheck(); break; 
-                case Keys.W:     MakeMove(Directions.Up);    GameOverCheck(); break; 
-                case Keys.S:     MakeMove(Directions.Down);  GameOverCheck(); break; 
+                case Keys.Left: MakeMove(Directions.Left); GameOverCheck(); break;
+                case Keys.Right: MakeMove(Directions.Right); GameOverCheck(); break;
+                case Keys.Up: MakeMove(Directions.Up); GameOverCheck(); break;
+                case Keys.Down: MakeMove(Directions.Down); GameOverCheck(); break;
+                case Keys.A: MakeMove(Directions.Left); GameOverCheck(); break;
+                case Keys.D: MakeMove(Directions.Right); GameOverCheck(); break;
+                case Keys.W: MakeMove(Directions.Up); GameOverCheck(); break;
+                case Keys.S: MakeMove(Directions.Down); GameOverCheck(); break;
 
-                case Keys.Escape: Close();break;
-                    
+                case Keys.Escape: Close(); break;
+
             }
         }
 
-        // methods for cell moving
+        /// methods for cell moving
         private bool MoveLeft()
         {
             bool wasMove = false;
@@ -204,18 +204,18 @@ namespace WinForms.Forms
             for (int i = 0; i < 4; i++) // lines
             {
                 for (int k = 0; k < 3; k++)
-                for (int j = 0; j < 3; j++) // collumns
-                {
-                    Label lbl1 = (Label)panelGameField.Controls.Find("cell" + i + j, false)[0];
-                    Label lbl2 = (Label)panelGameField.Controls.Find("cell" + i + (j+1), false)[0];
-                    if(lbl1.Text == "0" && lbl2.Text != "0")
+                    for (int j = 0; j < 3; j++) // collumns
                     {
-                        lbl1.Text = lbl2.Text;
-                        lbl2.Text = "0";
-                        wasMove = true;
-                    } 
-                    
-                }
+                        Label lbl1 = (Label)panelGameField.Controls.Find("cell" + i + j, false)[0];
+                        Label lbl2 = (Label)panelGameField.Controls.Find("cell" + i + (j + 1), false)[0];
+                        if (lbl1.Text == "0" && lbl2.Text != "0")
+                        {
+                            lbl1.Text = lbl2.Text;
+                            lbl2.Text = "0";
+                            wasMove = true;
+                        }
+
+                    }
                 // Collapse
                 for (int j = 0; j < 3; j++)
                 {
@@ -223,9 +223,10 @@ namespace WinForms.Forms
                     Label lbl2 = (Label)panelGameField.Controls.Find("cell" + i + (j + 1), false)[0];
                     if (lbl1.Text == lbl2.Text)
                     {
+                        appearLabelsList.Add(lbl1);
+                        oldLabelsList.Add(lbl2);
                         lbl1.Text = (int.Parse(lbl1.Text) * 2).ToString();
                         lbl2.Text = "0";
-                        appearLabelsList.Add(lbl1);
                         j++;
                         wasMove = true;
                     }
@@ -254,7 +255,7 @@ namespace WinForms.Forms
             for (int i = 0; i < 4; i++) // lines
             {
                 for (int k = 0; k < 3; k++)
-                    for (int j = 3; j > 0; j--) 
+                    for (int j = 3; j > 0; j--)
                     {
                         Label lbl1 = LabelAt(i, j);
                         Label lbl2 = LabelAt(i, j - 1);
@@ -272,9 +273,10 @@ namespace WinForms.Forms
                     Label lbl2 = LabelAt(i, j - 1);
                     if (lbl1.Text == lbl2.Text)
                     {
+                        appearLabelsList.Add(lbl1);
+                        oldLabelsList.Add(lbl2);
                         lbl1.Text = (int.Parse(lbl1.Text) * 2).ToString();
                         lbl2.Text = "0";
-                        appearLabelsList.Add(lbl1);
                         j--;
                         wasMove = true;
                         lbl1.Tag = new AnimData { BackColor = lbl1.BackColor };
@@ -319,10 +321,11 @@ namespace WinForms.Forms
                     Label lbl1 = LabelAt(i, j);
                     Label lbl2 = LabelAt(i + 1, j);
                     if (lbl1.Text == lbl2.Text && lbl2.Text != "0")
-                        {
+                    {
+                        appearLabelsList.Add(lbl1);
+                        oldLabelsList.Add(lbl2);
                         lbl1.Text = (int.Parse(lbl1.Text) * 2).ToString();
                         lbl2.Text = "0";
-                        appearLabelsList.Add(lbl1);
                         i++;
                         wasMove = true;
                         lbl1.Tag = new AnimData { BackColor = lbl1.BackColor };
@@ -369,9 +372,10 @@ namespace WinForms.Forms
                     Label lbl2 = LabelAt(i - 1, j);
                     if (lbl1.Text == lbl2.Text && lbl2.Text != "0")
                     {
+                        appearLabelsList.Add(lbl1);
+                        oldLabelsList.Add(lbl2);
                         lbl1.Text = (int.Parse(lbl1.Text) * 2).ToString();
                         lbl2.Text = "0";
-                        appearLabelsList.Add(lbl1);
                         i--;
                         wasMove = true;
                     }
@@ -392,24 +396,25 @@ namespace WinForms.Forms
             return wasMove;
         }
 
+        /// move processing switch
         private void MakeMove(Directions direction)
         {
-            switch(direction)
+            switch (direction)
             {
                 case Directions.Left:
-                    if (MoveLeft()) 
-                    { 
-                        AddCell(); 
+                    if (MoveLeft())
+                    {
+                        AddCell();
                         ColorCells();
                         animTick = 0;
                         timerAnim.Start();  // Start timer for animations
                         return;
-                    } 
-                    else  break;
+                    }
+                    else break;
                 case Directions.Right:
                     if (MoveRight())
                     {
-                        AddCell(); 
+                        AddCell();
                         ColorCells();
                         animTick = 0;
                         timerAnim.Start();  // Start timer for animations
@@ -440,6 +445,7 @@ namespace WinForms.Forms
             // MessageBox.Show("No move");
         }
 
+        /// increasing big command for finding label (cell)
         private Label LabelAt(int i, int j)
         {
             return (Label)panelGameField.Controls.Find("cell" + i + j, false)[0];
@@ -468,22 +474,24 @@ namespace WinForms.Forms
         private void timerAnim_Tick(object sender, EventArgs e)
         {
             var animData = appearLabel?.Tag as AnimData;
-            if(animData == null || appearLabel == null || appearLabelsList.Count == 0)
+            if (animData == null || appearLabel == null || appearLabelsList.Count == 0)
             {
                 timerAnim.Stop();
                 return;
             }
             // cycle for animate new labels and collapsed labels
-            foreach (var l in appearLabelsList)
+            foreach (var newLabel in appearLabelsList)
             {
-                if (Convert.ToInt32(l.Text) % 2 == 0 && l.Text != "0")
+                if (Convert.ToInt32(newLabel.Text) % 2 == 0 && newLabel.Text != "0")
                 {
-                    l.BackColor = Color.FromArgb(animTick * 10, l.BackColor);
+                    newLabel.BackColor = Color.FromArgb(animTick * 10, newLabel.BackColor);
                     // pulsating for text in cell
-                    l.Font = new Font(l.Font.FontFamily, 18); // from 1 unit
-                    // l.Font = new Font(l.Font.FontFamily, 18 - animTick / 2, FontStyle.Bold); // reduction
-                    l.Font = new Font(l.Font.FontFamily, animTick / 2 + 10, FontStyle.Bold); // increasing
+                    newLabel.Font = new Font(newLabel.Font.FontFamily, 18); // from 1 unit
+                    newLabel.Font = new Font(newLabel.Font.FontFamily, 18 - animTick / 2, FontStyle.Bold); // reduction
+                    newLabel.Font = new Font(newLabel.Font.FontFamily, animTick / 2 + 10, FontStyle.Bold); // increasing
+
                 }
+
             }
             animTick++;
             // appearLabel.BackColor = Color.FromArgb(animTick * 10, animData.BackColor);
@@ -508,24 +516,24 @@ namespace WinForms.Forms
 
         private void panelSensor_MouseUp(object sender, MouseEventArgs e)
         {
-            if(isMD)
+            if (isMD)
             {
                 UpPoint.X = e.X;
                 UpPoint.Y = e.Y;
                 SensorMove();
                 isMD = false;
             }
-            
+
         }
 
-       
+
 
         private void SensorMove()
         {
-            if( Math.Abs(UpPoint.X - DownPoint.X) <
-                Math.Abs(UpPoint.Y - DownPoint.Y) ) // |dX| < |dY| -  Vertical
+            if (Math.Abs(UpPoint.X - DownPoint.X) <
+                Math.Abs(UpPoint.Y - DownPoint.Y)) // |dX| < |dY| -  Vertical
             {
-                if(UpPoint.Y < DownPoint.Y) // Up
+                if (UpPoint.Y < DownPoint.Y) // Up
                 {
                     MakeMove(Directions.Up);
                 }
@@ -558,7 +566,7 @@ namespace WinForms.Forms
     {
         Left,
         Right,
-        Up, 
+        Up,
         Down
     }
 }
