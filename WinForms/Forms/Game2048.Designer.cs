@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelGameField = new System.Windows.Forms.Panel();
             this.cell33 = new System.Windows.Forms.Label();
             this.cell23 = new System.Windows.Forms.Label();
@@ -46,11 +47,10 @@
             this.cell02 = new System.Windows.Forms.Label();
             this.cell00 = new System.Windows.Forms.Label();
             this.panelDisplay = new System.Windows.Forms.Panel();
-            this.label2048 = new System.Windows.Forms.Label();
-            this.labelScore = new System.Windows.Forms.Label();
-            this.labelBest = new System.Windows.Forms.Label();
-            this.labelCounterScore = new System.Windows.Forms.Label();
-            this.labelCounterBest = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.panelSensor = new System.Windows.Forms.Panel();
+            this.timerClock = new System.Windows.Forms.Timer(this.components);
+            this.timerAnim = new System.Windows.Forms.Timer(this.components);
             this.panelGameField.SuspendLayout();
             this.panelDisplay.SuspendLayout();
             this.SuspendLayout();
@@ -240,82 +240,48 @@
             // 
             // panelDisplay
             // 
-            this.panelDisplay.Controls.Add(this.labelCounterBest);
-            this.panelDisplay.Controls.Add(this.labelCounterScore);
-            this.panelDisplay.Controls.Add(this.labelBest);
-            this.panelDisplay.Controls.Add(this.labelScore);
-            this.panelDisplay.Controls.Add(this.label2048);
+            this.panelDisplay.Controls.Add(this.labelTime);
             this.panelDisplay.Location = new System.Drawing.Point(25, 24);
             this.panelDisplay.Name = "panelDisplay";
-            this.panelDisplay.Size = new System.Drawing.Size(700, 200);
+            this.panelDisplay.Size = new System.Drawing.Size(492, 200);
             this.panelDisplay.TabIndex = 1;
             // 
-            // label2048
+            // labelTime
             // 
-            this.label2048.AutoSize = true;
-            this.label2048.Font = new System.Drawing.Font("Arial Black", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2048.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label2048.Location = new System.Drawing.Point(3, 12);
-            this.label2048.Name = "label2048";
-            this.label2048.Size = new System.Drawing.Size(245, 106);
-            this.label2048.TabIndex = 0;
-            this.label2048.Text = "2048";
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTime.Location = new System.Drawing.Point(3, 160);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(125, 40);
+            this.labelTime.TabIndex = 0;
+            this.labelTime.Text = "00:00:00";
             // 
-            // labelScore
+            // panelSensor
             // 
-            this.labelScore.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.labelScore.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelScore.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelScore.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelScore.Location = new System.Drawing.Point(282, 12);
-            this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(199, 150);
-            this.labelScore.TabIndex = 2;
-            this.labelScore.Text = "SCORE";
-            this.labelScore.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.panelSensor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSensor.Location = new System.Drawing.Point(533, 24);
+            this.panelSensor.Name = "panelSensor";
+            this.panelSensor.Size = new System.Drawing.Size(215, 200);
+            this.panelSensor.TabIndex = 6;
+            this.panelSensor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelSensor_MouseDown);
+            this.panelSensor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelSensor_MouseUp);
             // 
-            // labelBest
+            // timerClock
             // 
-            this.labelBest.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.labelBest.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelBest.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelBest.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelBest.Location = new System.Drawing.Point(498, 12);
-            this.labelBest.Name = "labelBest";
-            this.labelBest.Size = new System.Drawing.Size(199, 150);
-            this.labelBest.TabIndex = 2;
-            this.labelBest.Text = "BEST";
-            this.labelBest.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.timerClock.Interval = 50;
+            this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
             // 
-            // labelCounterScore
+            // timerAnim
             // 
-            this.labelCounterScore.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.labelCounterScore.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCounterScore.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelCounterScore.Location = new System.Drawing.Point(302, 78);
-            this.labelCounterScore.Name = "labelCounterScore";
-            this.labelCounterScore.Size = new System.Drawing.Size(156, 64);
-            this.labelCounterScore.TabIndex = 3;
-            this.labelCounterScore.Text = "0";
-            this.labelCounterScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelCounterBest
-            // 
-            this.labelCounterBest.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.labelCounterBest.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCounterBest.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelCounterBest.Location = new System.Drawing.Point(520, 78);
-            this.labelCounterBest.Name = "labelCounterBest";
-            this.labelCounterBest.Size = new System.Drawing.Size(156, 64);
-            this.labelCounterBest.TabIndex = 4;
-            this.labelCounterBest.Text = "0";
-            this.labelCounterBest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timerAnim.Interval = 20;
+            this.timerAnim.Tick += new System.EventHandler(this.timerAnim_Tick);
             // 
             // Game2048
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 1002);
+            this.Controls.Add(this.panelSensor);
             this.Controls.Add(this.panelDisplay);
             this.Controls.Add(this.panelGameField);
             this.Name = "Game2048";
@@ -349,10 +315,9 @@
         private System.Windows.Forms.Label cell30;
         private System.Windows.Forms.Label cell20;
         private System.Windows.Forms.Label cell10;
-        private System.Windows.Forms.Label label2048;
-        private System.Windows.Forms.Label labelBest;
-        private System.Windows.Forms.Label labelScore;
-        private System.Windows.Forms.Label labelCounterScore;
-        private System.Windows.Forms.Label labelCounterBest;
+        private System.Windows.Forms.Panel panelSensor;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Timer timerClock;
+        private System.Windows.Forms.Timer timerAnim;
     }
 }

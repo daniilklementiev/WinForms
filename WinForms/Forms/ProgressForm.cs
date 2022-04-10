@@ -19,9 +19,8 @@ namespace WinForms.Forms
         private          float       _progressTime;
         // private          bool        _stopPressed;
         private          int         _progressState;
-        private          bool        _rollback;
         private          bool        _stopped;
-
+        private          bool        _rollback = false;
         private CancellationTokenSource cts;
         public ProgressForm(NLog.Logger logger, Random random)
         {
