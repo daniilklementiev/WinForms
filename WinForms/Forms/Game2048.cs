@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.IO;
 
 namespace WinForms.Forms
 {
@@ -18,23 +20,49 @@ namespace WinForms.Forms
         private Label appearLabel;                          // ref to Label(cell);
         private List<Label> appearLabelsList { get; set; }  // labels list to animate
         private List<Label> oldLabelsList { get; set; }     // old labels list
+        private GameState state;                            // Game data
         public Game2048(Random random)
         {
-            InitializeComponent();
             appearLabel = null!;                    // nullable animate label (old)
             _random = random;                       // creating random variable
             appearLabelsList = new List<Label>();   // creating label list
             oldLabelsList = new List<Label>();      // creating old label list
+            state = new GameState();
+            InitializeComponent();
         }
         private void Game2048_Load(object sender, EventArgs e)
         {
             panelGameField.BackColor = Color.FromArgb(0xBB, 0xAD, 0xA0);
             ClearGameField();
             this.ActiveControl = null;
+            SaveState();
             timeMs = 0;
             timerClock.Start();  // Start timer for Clock
+        }
 
-
+        /// <summary>
+        /// Load game from file
+        /// </summary>
+        private void UpdateState()
+        {
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
+                {
+                    // parse field from file to titles
+                    LabelAt(i, j).Text = Convert.ToString(state.Field[i][j]);
+                    ColorCells();
+                }
+        }
+        /// <summary>
+        /// Save game to file
+        /// </summary>
+        private void SaveState()
+        {
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
+                {
+                    state.Field[i][j] = int.Parse(LabelAt(i, j).Text);
+                }
         }
 
         /// <summary>
@@ -399,48 +427,34 @@ namespace WinForms.Forms
         /// move processing switch
         private void MakeMove(Directions direction)
         {
+            bool wasMove = false;
             switch (direction)
             {
                 case Directions.Left:
-                    if (MoveLeft())
-                    {
-                        AddCell();
-                        ColorCells();
-                        animTick = 0;
-                        timerAnim.Start();  // Start timer for animations
-                        return;
-                    }
-                    else break;
+                    wasMove = MoveLeft();
+                    break;
                 case Directions.Right:
-                    if (MoveRight())
-                    {
-                        AddCell();
-                        ColorCells();
-                        animTick = 0;
-                        timerAnim.Start();  // Start timer for animations
-                        return;
-                    }
-                    else break;
+                    wasMove = MoveRight();
+                    break;
                 case Directions.Up:
-                    if (MoveUp())
-                    {
-                        AddCell();
-                        ColorCells();
-                        animTick = 0;
-                        timerAnim.Start();  // Start timer for animations
-                        return;
-                    }
-                    else break;
+                    wasMove = MoveUp();
+                    break;
                 case Directions.Down:
-                    if (MoveDown())
-                    {
-                        AddCell();
-                        ColorCells();
-                        animTick = 0;
-                        timerAnim.Start();  // Start timer for animations
-                        return;
-                    }
-                    else break;
+                    wasMove = MoveDown();
+                    break;
+            }
+            if(wasMove)
+            {
+                AddCell();
+                ColorCells();
+                SaveState();
+                if(animationGameMenuItem.Checked) // toggle animation while state checked
+                {
+                    animTick = 0;
+                    timerAnim.Start();  // Start timer for animations
+                }
+                
+                return;
             }
             // MessageBox.Show("No move");
         }
@@ -486,9 +500,9 @@ namespace WinForms.Forms
                 {
                     newLabel.BackColor = Color.FromArgb(animTick * 10, newLabel.BackColor);
                     // pulsating for text in cell
-                    newLabel.Font = new Font(newLabel.Font.FontFamily, 18); // from 1 unit
-                    newLabel.Font = new Font(newLabel.Font.FontFamily, 18 - animTick / 2, FontStyle.Bold); // reduction
-                    newLabel.Font = new Font(newLabel.Font.FontFamily, animTick / 2 + 10, FontStyle.Bold); // increasing
+                    // newLabel.Font = new Font(newLabel.Font.FontFamily, 18); // from 1 unit
+                    newLabel.Font = new Font(newLabel.Font.FontFamily, Interpolator.Linear(18, 1, 4 * animTick), FontStyle.Bold); // reduction
+                    newLabel.Font = new Font(newLabel.Font.FontFamily, Interpolator.Linear(1, 18, 4 * animTick), FontStyle.Bold); // increasing
 
                 }
 
@@ -526,8 +540,6 @@ namespace WinForms.Forms
 
         }
 
-
-
         private void SensorMove()
         {
             if (Math.Abs(UpPoint.X - DownPoint.X) <
@@ -556,10 +568,119 @@ namespace WinForms.Forms
         }
 
         #endregion
+
+        private void exitMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes ==
+                MessageBox.Show("Really?", "Confirm", MessageBoxButtons.YesNo))
+            {
+                Close();
+            }
+        }
+
+        private void topmostMenuItem_Click(object sender, EventArgs e)
+        {
+            this.TopMost = topmostMenuItem.Checked;
+        }
+
+        private void newGameMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes ==
+                MessageBox.Show("Do you want to create a new game?", "Confirm", MessageBoxButtons.YesNo))
+            {
+                ClearGameField();
+            }
+        }
+
+        private void openFileMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.FileName = "savegame.json";
+            openFileDialog1.Filter = "JSON files|*.json|All files|*.*";
+
+            if (DialogResult.OK == openFileDialog1.ShowDialog())
+            {
+                // MessageBox.Show(openFileDialog1.FileName);
+                string content = String.Empty;
+                // load json string
+                using(var reader = new StreamReader(openFileDialog1.FileName)) 
+                {
+                    content = reader.ReadToEnd();
+                }
+                // deserialization
+                var deserializeState = JsonSerializer.Deserialize<GameState>(content);
+                // if file has content - load game
+                if(deserializeState != null)
+                {
+                    state.Field = deserializeState.Field;
+                    UpdateState();
+                }
+                else
+                {
+                    // file empty
+                    MessageBox.Show("File is empty. Nothing to upload", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+        }
+        private void saveFileMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = Application.StartupPath;
+            saveFileDialog1.FileName = "savegame.json";
+
+            if (DialogResult.OK == saveFileDialog1.ShowDialog())
+            {
+                // Serialize to file gamestate (save game)
+                using (var writer = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    writer.Write(JsonSerializer.Serialize(state));
+                }
+                
+
+            }
+        }
+        private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Connect the tiles with the same numbers ");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Join the numbers and get to the 2048 tile");
+        }
+
+        
     }
+
+    class GameState
+    {
+        public int[][] Field { get; set; }
+        public GameState()
+        {
+            Field = new int[4][];
+            for (int i = 0; i < 4; i++)
+            {
+                Field[i] = new int[4];
+            }
+        }
+    }
+
     class AnimData  // Data for Control's animation
     {
         public Color BackColor { get; set; }
+    }
+    
+    class Interpolator
+    {
+            /* Interpolation values between two values
+             * 0% - from, 100% - to -- knew
+             * function processing value relevanted percent
+             */
+        public static int Linear(int from, int to, int percent)
+        {
+            
+            return from + (to - from) * percent / 100;
+        }
     }
 
     enum Directions

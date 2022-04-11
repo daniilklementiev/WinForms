@@ -48,14 +48,31 @@
             this.cell02 = new System.Windows.Forms.Label();
             this.cell00 = new System.Windows.Forms.Label();
             this.panelDisplay = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelTime = new System.Windows.Forms.Label();
             this.panelSensor = new System.Windows.Forms.Panel();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.timerAnim = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.topmostMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGameMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoGameMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.animationGameMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panelGameField.SuspendLayout();
             this.panelDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelGameField
@@ -76,7 +93,7 @@
             this.panelGameField.Controls.Add(this.cell10);
             this.panelGameField.Controls.Add(this.cell02);
             this.panelGameField.Controls.Add(this.cell00);
-            this.panelGameField.Location = new System.Drawing.Point(25, 250);
+            this.panelGameField.Location = new System.Drawing.Point(28, 290);
             this.panelGameField.Name = "panelGameField";
             this.panelGameField.Size = new System.Drawing.Size(700, 700);
             this.panelGameField.TabIndex = 0;
@@ -245,10 +262,20 @@
             // 
             this.panelDisplay.Controls.Add(this.pictureBox1);
             this.panelDisplay.Controls.Add(this.labelTime);
-            this.panelDisplay.Location = new System.Drawing.Point(25, 24);
+            this.panelDisplay.Location = new System.Drawing.Point(28, 43);
             this.panelDisplay.Name = "panelDisplay";
-            this.panelDisplay.Size = new System.Drawing.Size(492, 200);
+            this.panelDisplay.Size = new System.Drawing.Size(470, 194);
             this.panelDisplay.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WinForms.Properties.Resources.picture2048;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 140);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // labelTime
             // 
@@ -263,7 +290,7 @@
             // panelSensor
             // 
             this.panelSensor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSensor.Location = new System.Drawing.Point(533, 24);
+            this.panelSensor.Location = new System.Drawing.Point(513, 43);
             this.panelSensor.Name = "panelSensor";
             this.panelSensor.Size = new System.Drawing.Size(215, 200);
             this.panelSensor.TabIndex = 6;
@@ -279,15 +306,128 @@
             // 
             this.timerAnim.Tick += new System.EventHandler(this.timerAnim_Tick);
             // 
-            // pictureBox1
+            // menuStrip1
             // 
-            this.pictureBox1.Image = global::WinForms.Properties.Resources.picture2048;
-            this.pictureBox1.Location = new System.Drawing.Point(-57, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(280, 140);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.gameToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(760, 42);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.topmostMenuItem,
+            this.openFileMenuItem,
+            this.saveFileMenuItem,
+            this.exitMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 38);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // topmostMenuItem
+            // 
+            this.topmostMenuItem.CheckOnClick = true;
+            this.topmostMenuItem.Name = "topmostMenuItem";
+            this.topmostMenuItem.Size = new System.Drawing.Size(291, 44);
+            this.topmostMenuItem.Text = "Topmost";
+            this.topmostMenuItem.Click += new System.EventHandler(this.topmostMenuItem_Click);
+            // 
+            // openFileMenuItem
+            // 
+            this.openFileMenuItem.Name = "openFileMenuItem";
+            this.openFileMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openFileMenuItem.Size = new System.Drawing.Size(291, 44);
+            this.openFileMenuItem.Text = "Open";
+            this.openFileMenuItem.Click += new System.EventHandler(this.openFileMenuItem_Click);
+            // 
+            // saveFileMenuItem
+            // 
+            this.saveFileMenuItem.Name = "saveFileMenuItem";
+            this.saveFileMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveFileMenuItem.Size = new System.Drawing.Size(291, 44);
+            this.saveFileMenuItem.Text = "Save";
+            this.saveFileMenuItem.Click += new System.EventHandler(this.saveFileMenuItem_Click);
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.exitMenuItem.Size = new System.Drawing.Size(291, 44);
+            this.exitMenuItem.Text = "Exit";
+            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newGameMenuItem,
+            this.undoGameMenuItem,
+            this.animationGameMenuItem});
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(96, 38);
+            this.gameToolStripMenuItem.Text = "Game";
+            // 
+            // newGameMenuItem
+            // 
+            this.newGameMenuItem.Name = "newGameMenuItem";
+            this.newGameMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newGameMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.newGameMenuItem.Text = "New game";
+            this.newGameMenuItem.Click += new System.EventHandler(this.newGameMenuItem_Click);
+            // 
+            // undoGameMenuItem
+            // 
+            this.undoGameMenuItem.Name = "undoGameMenuItem";
+            this.undoGameMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoGameMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.undoGameMenuItem.Text = "Undo";
+            // 
+            // animationGameMenuItem
+            // 
+            this.animationGameMenuItem.CheckOnClick = true;
+            this.animationGameMenuItem.Name = "animationGameMenuItem";
+            this.animationGameMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
+            this.animationGameMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.animationGameMenuItem.Text = "Animation";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rulesToolStripMenuItem,
+            this.recordsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(84, 38);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // rulesToolStripMenuItem
+            // 
+            this.rulesToolStripMenuItem.Name = "rulesToolStripMenuItem";
+            this.rulesToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.rulesToolStripMenuItem.Text = "Rules";
+            this.rulesToolStripMenuItem.Click += new System.EventHandler(this.rulesToolStripMenuItem_Click);
+            // 
+            // recordsToolStripMenuItem
+            // 
+            this.recordsToolStripMenuItem.Name = "recordsToolStripMenuItem";
+            this.recordsToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.recordsToolStripMenuItem.Text = "Records";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Game2048
             // 
@@ -297,7 +437,9 @@
             this.Controls.Add(this.panelSensor);
             this.Controls.Add(this.panelDisplay);
             this.Controls.Add(this.panelGameField);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Game2048";
             this.Text = "Game2048";
             this.Load += new System.EventHandler(this.Game2048_Load);
@@ -306,7 +448,10 @@
             this.panelDisplay.ResumeLayout(false);
             this.panelDisplay.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -335,5 +480,21 @@
         private System.Windows.Forms.Timer timerClock;
         private System.Windows.Forms.Timer timerAnim;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem topmostMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newGameMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoGameMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem animationGameMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rulesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recordsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFileMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveFileMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
