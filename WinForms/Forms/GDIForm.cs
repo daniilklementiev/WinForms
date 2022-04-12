@@ -42,18 +42,12 @@ namespace WinForms.Forms
 
         #endregion
 
-        Brush clearBrush, ballBrush;
-        Pen clearPen, ballPen;
         Ball ball;
         static int formHeight;
         static int formWidth;
         public GDIForm()
         {
             InitializeComponent();
-            clearBrush = new SolidBrush(this.BackColor);
-            clearPen = new Pen(this.BackColor, 3);
-            ballPen = new Pen(Color.Tomato, 3);
-            ballBrush = new SolidBrush(Color.Tomato);
             ball = new Ball
             {
                 X = this.Width / 2,
@@ -61,8 +55,12 @@ namespace WinForms.Forms
                 W = 20,
                 H = 20,
                 Vx = -2,
-                Vy = -2
-            };
+                Vy = -2,
+                clearBrush = new SolidBrush(this.BackColor),
+                clearPen = new Pen(this.BackColor, 3),
+                ballPen = new Pen(Color.Tomato, 3),
+                ballBrush = new SolidBrush(Color.Tomato)
+            };  
         }
         private void GDIForm_Load(object sender, EventArgs e)
         {
@@ -82,10 +80,10 @@ namespace WinForms.Forms
         {
             formHeight = this.ClientSize.Height;
             formWidth = this.ClientSize.Width;
-            e.Graphics.DrawEllipse(clearPen, ball.X, ball.Y, ball.W, ball.H);
+            e.Graphics.DrawEllipse(ball.clearPen, ball.X, ball.Y, ball.W, ball.H);
             // e.Graphics.FillEllipse(clearBrush, ball.X, ball.Y, ball.W, ball.H);
             ball.Track();
-            e.Graphics.DrawEllipse(ballPen, ball.X, ball.Y, ball.W, ball.H);
+            e.Graphics.DrawEllipse(ball.ballPen, ball.X, ball.Y, ball.W, ball.H);
             // e.Graphics.FillEllipse(ballBrush, ball.Y, ball.Y, ball.W, ball.H);
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -96,33 +94,47 @@ namespace WinForms.Forms
 
         class Ball
         {
-            public int X { get; set; }
-            public int Y { get; set; }
-            public int W { get; set; }
-            public int H { get; set; }
-            public int Vx { get; set; }
-            public int Vy { get; set; }
-
-            public void Track()
+            public int X { get; set; }              // x position of ball
+            public int Y { get; set; }              // y position of ball
+            public int W { get; set; }              // width of ball
+            public int H { get; set; }              // height of ball
+            public int Vx { get; set; }             // speed by x
+            public int Vy { get; set; }             // speed by y
+            public Brush clearBrush { get; set; }   // brush to clear track
+            public Brush ballBrush { get; set; }    // brush for paint ball
+            public Pen clearPen { get; set; }       // pen to clear track
+            public Pen ballPen { get; set; }        // pen for paint ball
+            public Ball() // ctor
+            {
+                X = 2;
+                Y = 2;
+                W = 2;
+                H = 2;
+                clearBrush = new SolidBrush(Form.DefaultBackColor);
+                ballBrush = new SolidBrush(Color.Black);
+                clearPen = new Pen(Form.DefaultBackColor);
+                ballPen = new Pen(Color.Black);
+            }
+            public void Track() // track func (move)
             {
                 X += Vx;
                 Y += Vy;
-                if (X < 0)
+                if (X < 0) // right frame
                 {
                     X = 0;
                     Vx = -Vx;
                 }
-                else if (X + W > GDIForm.formWidth)
+                else if (X + W > GDIForm.formWidth) // left frame
                 {
                     X = GDIForm.formWidth - W;
                     Vx = -Vx;
                 }
-                if (Y < 0)
+                if (Y < 0) // up frame
                 {
                     Y = 0;
                     Vy = -Vy;
                 }
-                else if (Y + H > GDIForm.formHeight)
+                else if (Y + H > GDIForm.formHeight) // bottom frame
                 {
                     Y = GDIForm.formHeight - H;
                     Vy = -Vy;
@@ -132,9 +144,3 @@ namespace WinForms.Forms
     }
 }
 
-/* GDI - Graphic Device Interface
- * Набор универсальных методов для отображения графических элементов (рисования)
- * 
- *
- *
- */
