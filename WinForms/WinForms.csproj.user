@@ -10,6 +10,9 @@
     <Compile Update="Forms\Game2048.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\GDIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Portal.cs">
       <SubType>Form</SubType>
     </Compile>

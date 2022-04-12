@@ -643,7 +643,6 @@ namespace WinForms.Forms
         {
             MessageBox.Show("Connect the tiles with the same numbers ");
         }
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Join the numbers and get to the 2048 tile");

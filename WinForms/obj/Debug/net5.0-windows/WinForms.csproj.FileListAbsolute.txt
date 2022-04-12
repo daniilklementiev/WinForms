@@ -48,3 +48,4 @@ C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\Microsoft.P
 C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\Microsoft.Practices.Unity.dll
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.ProgressForm.resources
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.Game2048.resources
+C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.GDIForm.resources

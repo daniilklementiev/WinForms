@@ -32,6 +32,7 @@
             this.Calculator = new System.Windows.Forms.LinkLabel();
             this.progressLink = new System.Windows.Forms.LinkLabel();
             this.linkLabel2048 = new System.Windows.Forms.LinkLabel();
+            this.linkGdi = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -86,11 +87,25 @@
             this.linkLabel2048.Text = "Cобытия и взаимодействия (2048)";
             this.linkLabel2048.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2048_LinkClicked);
             // 
+            // linkGdi
+            // 
+            this.linkGdi.AutoSize = true;
+            this.linkGdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkGdi.Location = new System.Drawing.Point(22, 402);
+            this.linkGdi.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkGdi.Name = "linkGdi";
+            this.linkGdi.Size = new System.Drawing.Size(689, 48);
+            this.linkGdi.TabIndex = 0;
+            this.linkGdi.TabStop = true;
+            this.linkGdi.Text = "Графические возможности (GDI+)";
+            this.linkGdi.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGdi_LinkClicked);
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkGdi);
             this.Controls.Add(this.linkLabel2048);
             this.Controls.Add(this.progressLink);
             this.Controls.Add(this.Calculator);
@@ -109,5 +124,6 @@
         private System.Windows.Forms.LinkLabel Calculator;
         private System.Windows.Forms.LinkLabel progressLink;
         private System.Windows.Forms.LinkLabel linkLabel2048;
+        private System.Windows.Forms.LinkLabel linkGdi;
     }
 }
