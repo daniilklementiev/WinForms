@@ -71,11 +71,19 @@ namespace WinForms.Forms
             timerId = TimeSetEvent(uDelay, uResolution, Timer_Tick, ref dwUser, TIME_ONESHOT);*/
             timer1.Start();
         }
+
+        /// <summary>
+        /// Method for closing form
+        /// </summary>
         private void GDIForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // TimeKillEvent(timerId);
             timer1.Stop();
         }
+
+        /// <summary>
+        /// Method for paint form
+        /// </summary>
         private void GDIForm_Paint(object sender, PaintEventArgs e)
         {
             formHeight = this.ClientSize.Height;
@@ -91,7 +99,7 @@ namespace WinForms.Forms
             Invalidate();
         }
 
-
+        // сlass for flying ball
         class Ball
         {
             public int X { get; set; }              // x position of ball
