@@ -33,6 +33,7 @@
             this.progressLink = new System.Windows.Forms.LinkLabel();
             this.linkLabel2048 = new System.Windows.Forms.LinkLabel();
             this.linkGdi = new System.Windows.Forms.LinkLabel();
+            this.linkProcess = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -100,11 +101,25 @@
             this.linkGdi.Text = "Графические возможности (GDI+)";
             this.linkGdi.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGdi_LinkClicked);
             // 
+            // linkProcess
+            // 
+            this.linkProcess.AutoSize = true;
+            this.linkProcess.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkProcess.Location = new System.Drawing.Point(21, 472);
+            this.linkProcess.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkProcess.Name = "linkProcess";
+            this.linkProcess.Size = new System.Drawing.Size(215, 48);
+            this.linkProcess.TabIndex = 0;
+            this.linkProcess.TabStop = true;
+            this.linkProcess.Text = "Процессы";
+            this.linkProcess.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkProcess_LinkClicked);
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkProcess);
             this.Controls.Add(this.linkGdi);
             this.Controls.Add(this.linkLabel2048);
             this.Controls.Add(this.progressLink);
@@ -125,5 +140,6 @@
         private System.Windows.Forms.LinkLabel progressLink;
         private System.Windows.Forms.LinkLabel linkLabel2048;
         private System.Windows.Forms.LinkLabel linkGdi;
+        private System.Windows.Forms.LinkLabel linkProcess;
     }
 }

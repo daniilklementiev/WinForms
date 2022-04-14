@@ -104,7 +104,11 @@ namespace WinForms.Forms
         void StopMmTimer()
         {
             TimeKillEvent(timerId);
+            try
+            {
+
             timerHandle.Free();
+            } catch { }
         }
 
         #endregion
