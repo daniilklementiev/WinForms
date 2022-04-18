@@ -34,6 +34,7 @@
             this.linkLabel2048 = new System.Windows.Forms.LinkLabel();
             this.linkGdi = new System.Windows.Forms.LinkLabel();
             this.linkProcess = new System.Windows.Forms.LinkLabel();
+            this.linkLabelPatterns = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -114,11 +115,25 @@
             this.linkProcess.Text = "Процессы";
             this.linkProcess.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkProcess_LinkClicked);
             // 
+            // linkLabelPatterns
+            // 
+            this.linkLabelPatterns.AutoSize = true;
+            this.linkLabelPatterns.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelPatterns.Location = new System.Drawing.Point(15, 532);
+            this.linkLabelPatterns.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabelPatterns.Name = "linkLabelPatterns";
+            this.linkLabelPatterns.Size = new System.Drawing.Size(536, 48);
+            this.linkLabelPatterns.TabIndex = 0;
+            this.linkLabelPatterns.TabStop = true;
+            this.linkLabelPatterns.Text = "Паттерны проектирования";
+            this.linkLabelPatterns.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelPatterns_LinkClicked);
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkLabelPatterns);
             this.Controls.Add(this.linkProcess);
             this.Controls.Add(this.linkGdi);
             this.Controls.Add(this.linkLabel2048);
@@ -141,5 +156,6 @@
         private System.Windows.Forms.LinkLabel linkLabel2048;
         private System.Windows.Forms.LinkLabel linkGdi;
         private System.Windows.Forms.LinkLabel linkProcess;
+        private System.Windows.Forms.LinkLabel linkLabelPatterns;
     }
 }
