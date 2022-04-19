@@ -12,12 +12,11 @@ namespace WinForms.Forms
     public partial class MvPatternsForm : Form
     {
         private DemoModel model;
-        private DemoModel newModel;
-
+        private String _filename;
         public MvPatternsForm()
         {
+            _filename = String.Empty;
             model = null!;
-            newModel = null!;
             InitializeComponent();
         }
 
@@ -51,6 +50,20 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
             this.ActiveControl = null;
         }
 
+        private void ChooseFileModel(String filename)
+        {
+            model = new DemoModel(filename);                // Model
+            model.ModelChangeEvent += OnModelChange;        // Event handler (View -> Model)
+            model.ModelChangeEvent += OnFileSave;           // Event handler (View -> Model)
+            richTextBoxDemo.TextChanged += (s, e) =>        // Model -> View
+            {
+                model.Content = richTextBoxDemo.Text;       // Assignment will raise ModelChangeEvent 
+            };                                              // and its subscribers
+
+            richTextBoxDemo.Text = model.Content;           // View init 
+
+        }
+
         private void tabControlPatterns_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlPatterns.SelectedIndex == 1) // MVP tab
@@ -65,27 +78,10 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
 
             if (tabControlPatterns.SelectedIndex == 3) // demo tab
             {
-                // Tab activation = new application
-
-                model = new DemoModel("demo.txt");          // model
-                model.ModelChangeEvent += OnModelChange;    // Event handler (view -> model)
-                model.ModelChangeEvent += OnFileSave;       // save in file
-                richTextBoxDemo.TextChanged += (s, e) =>    // model -> view
-                {
-                    model.Content = richTextBoxDemo.Text;   // Assingment will raise ModelChangeEvent
-                };                                          // and its subscribers (OnModelChange)
-                richTextBoxDemo.Text = model.Content;       // view init 
-
-                /////////////////////////////////////////////
-                newModel = new DemoModel("demo2.txt");
-                newModel.ModelChangeEvent += OnModelChange2;     // Event handler (view -> model)
-                newModel.ModelChangeEvent += OnFileSave2;        // Save in file
-                richTextBoxDemo2.TextChanged += (s, e) =>        // model -> view
-                {
-                    newModel.Content = richTextBoxDemo2.Text;    // Assingment will raise ModelChangeEvent
-                };                                               // and its subscribers (OnModelChange)
-                richTextBoxDemo2.Text = newModel.Content;        // view init 
-
+                // default file - demo.txt
+                radioButtonDemo.Checked = true;
+                _filename = "demo.txt";
+                ChooseFileModel(_filename);
             }
         }
 
@@ -98,18 +94,21 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
 
         private void OnFileSave()
         {
-            File.WriteAllTextAsync(model.fileName, model.Content);
+            File.WriteAllText(_filename, model.Content);
         }
 
-        private void OnModelChange2()
+        private void radioButtonDemo_CheckedChanged(object sender, EventArgs e)
         {
-            // Update symbols count view
-            labelDemoSymbolsCnt2.Text = newModel.Content.Length.ToString(); // binding Cnt.Text to Content.Lenght
+            // change file in model
+            _filename = "demo.txt";
+            ChooseFileModel(_filename);
         }
 
-        private void OnFileSave2()
+        private void radioButtonDemo2_CheckedChanged(object sender, EventArgs e)
         {
-            File.WriteAllTextAsync(newModel.fileName, newModel.Content);
+            // change file in model
+            _filename = "demo2.txt";
+            ChooseFileModel(_filename);
         }
     }
 
@@ -160,7 +159,7 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
             set
             {
                 content = value;                            // update buffer
-                  // update file
+                
                 ModelChangeEvent.Invoke();                  // Raise event
             } 
         }

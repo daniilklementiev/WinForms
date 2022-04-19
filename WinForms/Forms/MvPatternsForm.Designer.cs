@@ -67,6 +67,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPageDemo = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
+            this.radioButtonDemo2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonDemo = new System.Windows.Forms.RadioButton();
             this.labelDemoSymbolsCnt = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.richTextBoxDemo = new System.Windows.Forms.RichTextBox();
@@ -76,9 +79,6 @@
             this.textBoxView = new System.Windows.Forms.TextBox();
             this.textBoxModel = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBoxDemo2 = new System.Windows.Forms.RichTextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.labelDemoSymbolsCnt2 = new System.Windows.Forms.Label();
             this.tabControlPatterns.SuspendLayout();
             this.tabPageMVC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -517,11 +517,11 @@
             // 
             // tabPageDemo
             // 
-            this.tabPageDemo.Controls.Add(this.labelDemoSymbolsCnt2);
-            this.tabPageDemo.Controls.Add(this.labelDemoSymbolsCnt);
             this.tabPageDemo.Controls.Add(this.label22);
+            this.tabPageDemo.Controls.Add(this.radioButtonDemo2);
+            this.tabPageDemo.Controls.Add(this.radioButtonDemo);
+            this.tabPageDemo.Controls.Add(this.labelDemoSymbolsCnt);
             this.tabPageDemo.Controls.Add(this.label21);
-            this.tabPageDemo.Controls.Add(this.richTextBoxDemo2);
             this.tabPageDemo.Controls.Add(this.richTextBoxDemo);
             this.tabPageDemo.Location = new System.Drawing.Point(8, 46);
             this.tabPageDemo.Name = "tabPageDemo";
@@ -530,21 +530,59 @@
             this.tabPageDemo.Text = "Demo";
             this.tabPageDemo.UseVisualStyleBackColor = true;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(536, 100);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(157, 45);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Select file";
+            // 
+            // radioButtonDemo2
+            // 
+            this.radioButtonDemo2.AutoSize = true;
+            this.radioButtonDemo2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButtonDemo2.Location = new System.Drawing.Point(536, 197);
+            this.radioButtonDemo2.Name = "radioButtonDemo2";
+            this.radioButtonDemo2.Size = new System.Drawing.Size(198, 49);
+            this.radioButtonDemo2.TabIndex = 3;
+            this.radioButtonDemo2.TabStop = true;
+            this.radioButtonDemo2.Text = "Demo2.txt";
+            this.radioButtonDemo2.UseVisualStyleBackColor = true;
+            this.radioButtonDemo2.CheckedChanged += new System.EventHandler(this.radioButtonDemo2_CheckedChanged);
+            // 
+            // radioButtonDemo
+            // 
+            this.radioButtonDemo.AutoSize = true;
+            this.radioButtonDemo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButtonDemo.Location = new System.Drawing.Point(536, 148);
+            this.radioButtonDemo.Name = "radioButtonDemo";
+            this.radioButtonDemo.Size = new System.Drawing.Size(181, 49);
+            this.radioButtonDemo.TabIndex = 3;
+            this.radioButtonDemo.TabStop = true;
+            this.radioButtonDemo.Text = "Demo.txt";
+            this.radioButtonDemo.UseVisualStyleBackColor = true;
+            this.radioButtonDemo.CheckedChanged += new System.EventHandler(this.radioButtonDemo_CheckedChanged);
+            // 
             // labelDemoSymbolsCnt
             // 
             this.labelDemoSymbolsCnt.AutoSize = true;
-            this.labelDemoSymbolsCnt.Location = new System.Drawing.Point(653, 28);
+            this.labelDemoSymbolsCnt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDemoSymbolsCnt.Location = new System.Drawing.Point(683, 28);
             this.labelDemoSymbolsCnt.Name = "labelDemoSymbolsCnt";
-            this.labelDemoSymbolsCnt.Size = new System.Drawing.Size(27, 32);
+            this.labelDemoSymbolsCnt.Size = new System.Drawing.Size(37, 45);
             this.labelDemoSymbolsCnt.TabIndex = 2;
             this.labelDemoSymbolsCnt.Text = "0";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label21.Location = new System.Drawing.Point(522, 28);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(115, 32);
+            this.label21.Size = new System.Drawing.Size(155, 45);
             this.label21.TabIndex = 1;
             this.label21.Text = "Symbols :";
             // 
@@ -552,7 +590,7 @@
             // 
             this.richTextBoxDemo.Location = new System.Drawing.Point(16, 28);
             this.richTextBoxDemo.Name = "richTextBoxDemo";
-            this.richTextBoxDemo.Size = new System.Drawing.Size(500, 175);
+            this.richTextBoxDemo.Size = new System.Drawing.Size(500, 521);
             this.richTextBoxDemo.TabIndex = 0;
             this.richTextBoxDemo.Text = "";
             // 
@@ -614,32 +652,6 @@
             this.label1.Size = new System.Drawing.Size(149, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Модель (М):";
-            // 
-            // richTextBoxDemo2
-            // 
-            this.richTextBoxDemo2.Location = new System.Drawing.Point(16, 254);
-            this.richTextBoxDemo2.Name = "richTextBoxDemo2";
-            this.richTextBoxDemo2.Size = new System.Drawing.Size(500, 175);
-            this.richTextBoxDemo2.TabIndex = 0;
-            this.richTextBoxDemo2.Text = "";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(522, 254);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(115, 32);
-            this.label22.TabIndex = 1;
-            this.label22.Text = "Symbols :";
-            // 
-            // labelDemoSymbolsCnt2
-            // 
-            this.labelDemoSymbolsCnt2.AutoSize = true;
-            this.labelDemoSymbolsCnt2.Location = new System.Drawing.Point(653, 254);
-            this.labelDemoSymbolsCnt2.Name = "labelDemoSymbolsCnt2";
-            this.labelDemoSymbolsCnt2.Size = new System.Drawing.Size(27, 32);
-            this.labelDemoSymbolsCnt2.TabIndex = 2;
-            this.labelDemoSymbolsCnt2.Text = "0";
             // 
             // MvPatternsForm
             // 
@@ -727,8 +739,8 @@
         private System.Windows.Forms.Label labelDemoSymbolsCnt;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.RichTextBox richTextBoxDemo;
-        private System.Windows.Forms.Label labelDemoSymbolsCnt2;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.RichTextBox richTextBoxDemo2;
+        private System.Windows.Forms.RadioButton radioButtonDemo2;
+        private System.Windows.Forms.RadioButton radioButtonDemo;
     }
 }
