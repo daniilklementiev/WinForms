@@ -11,8 +11,8 @@ namespace WinForms.Forms
 {
     public partial class MvPatternsForm : Form
     {
-        private DemoModel model;
-        private String _filename;
+        private DemoModel model;   // object of model
+        private String _filename;  // file name for saving
         public MvPatternsForm()
         {
             _filename = String.Empty;
@@ -92,6 +92,7 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
             labelDemoSymbolsCnt.Text = model.Content.Length.ToString(); // binding Cnt.Text to Content.Lenght
         }
 
+        // update file
         private void OnFileSave()
         {
             File.WriteAllText(_filename, model.Content);
@@ -159,7 +160,6 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
             set
             {
                 content = value;                            // update buffer
-                
                 ModelChangeEvent.Invoke();                  // Raise event
             } 
         }
