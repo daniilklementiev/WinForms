@@ -41,6 +41,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPageMVP = new System.Windows.Forms.TabPage();
+            this.textBoxMvpView = new System.Windows.Forms.TextBox();
             this.textBoxMvp = new System.Windows.Forms.TextBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -53,13 +54,31 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageMVVM = new System.Windows.Forms.TabPage();
+            this.textBoxMvvm = new System.Windows.Forms.TextBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tabPageDemo = new System.Windows.Forms.TabPage();
+            this.labelDemoSymbolsCnt = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.richTextBoxDemo = new System.Windows.Forms.RichTextBox();
             this.groupBoxText = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxView = new System.Windows.Forms.TextBox();
             this.textBoxModel = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxMvpView = new System.Windows.Forms.TextBox();
+            this.richTextBoxDemo2 = new System.Windows.Forms.RichTextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.labelDemoSymbolsCnt2 = new System.Windows.Forms.Label();
             this.tabControlPatterns.SuspendLayout();
             this.tabPageMVC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -70,6 +89,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.tabPageMVVM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.tabPageDemo.SuspendLayout();
             this.groupBoxText.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +104,7 @@
             this.tabControlPatterns.Controls.Add(this.tabPageMVC);
             this.tabControlPatterns.Controls.Add(this.tabPageMVP);
             this.tabControlPatterns.Controls.Add(this.tabPageMVVM);
+            this.tabControlPatterns.Controls.Add(this.tabPageDemo);
             this.tabControlPatterns.Location = new System.Drawing.Point(759, 28);
             this.tabControlPatterns.Name = "tabControlPatterns";
             this.tabControlPatterns.SelectedIndex = 0;
@@ -217,6 +244,15 @@
             this.tabPageMVP.Text = "MVP";
             this.tabPageMVP.UseVisualStyleBackColor = true;
             // 
+            // textBoxMvpView
+            // 
+            this.textBoxMvpView.Location = new System.Drawing.Point(787, 131);
+            this.textBoxMvpView.Multiline = true;
+            this.textBoxMvpView.Name = "textBoxMvpView";
+            this.textBoxMvpView.ReadOnly = true;
+            this.textBoxMvpView.Size = new System.Drawing.Size(214, 224);
+            this.textBoxMvpView.TabIndex = 7;
+            // 
             // textBoxMvp
             // 
             this.textBoxMvp.Location = new System.Drawing.Point(21, 438);
@@ -334,6 +370,18 @@
             // 
             // tabPageMVVM
             // 
+            this.tabPageMVVM.Controls.Add(this.textBoxMvvm);
+            this.tabPageMVVM.Controls.Add(this.pictureBox12);
+            this.tabPageMVVM.Controls.Add(this.pictureBox11);
+            this.tabPageMVVM.Controls.Add(this.pictureBox10);
+            this.tabPageMVVM.Controls.Add(this.pictureBox9);
+            this.tabPageMVVM.Controls.Add(this.pictureBox8);
+            this.tabPageMVVM.Controls.Add(this.label19);
+            this.tabPageMVVM.Controls.Add(this.label17);
+            this.tabPageMVVM.Controls.Add(this.label18);
+            this.tabPageMVVM.Controls.Add(this.label20);
+            this.tabPageMVVM.Controls.Add(this.label16);
+            this.tabPageMVVM.Controls.Add(this.label15);
             this.tabPageMVVM.Location = new System.Drawing.Point(8, 46);
             this.tabPageMVVM.Name = "tabPageMVVM";
             this.tabPageMVVM.Padding = new System.Windows.Forms.Padding(3);
@@ -341,6 +389,172 @@
             this.tabPageMVVM.TabIndex = 2;
             this.tabPageMVVM.Text = "MVVM";
             this.tabPageMVVM.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMvvm
+            // 
+            this.textBoxMvvm.Location = new System.Drawing.Point(12, 414);
+            this.textBoxMvvm.Multiline = true;
+            this.textBoxMvvm.Name = "textBoxMvvm";
+            this.textBoxMvvm.ReadOnly = true;
+            this.textBoxMvvm.Size = new System.Drawing.Size(993, 346);
+            this.textBoxMvvm.TabIndex = 3;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.Location = new System.Drawing.Point(648, 199);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(136, 47);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 2;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(318, 199);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(136, 47);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 2;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(648, 97);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(136, 47);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 2;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(318, 97);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(136, 47);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 2;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(12, 146);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(152, 70);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 1;
+            this.pictureBox8.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(790, 97);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(140, 47);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Model 1";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(790, 196);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(140, 47);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Model 2";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(182, 130);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(120, 47);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "View A";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(460, 199);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(182, 47);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "ViewModel";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(185, 199);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(117, 47);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "View B";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(460, 97);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(182, 47);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "ViewModel";
+            // 
+            // tabPageDemo
+            // 
+            this.tabPageDemo.Controls.Add(this.labelDemoSymbolsCnt2);
+            this.tabPageDemo.Controls.Add(this.labelDemoSymbolsCnt);
+            this.tabPageDemo.Controls.Add(this.label22);
+            this.tabPageDemo.Controls.Add(this.label21);
+            this.tabPageDemo.Controls.Add(this.richTextBoxDemo2);
+            this.tabPageDemo.Controls.Add(this.richTextBoxDemo);
+            this.tabPageDemo.Location = new System.Drawing.Point(8, 46);
+            this.tabPageDemo.Name = "tabPageDemo";
+            this.tabPageDemo.Size = new System.Drawing.Size(1021, 778);
+            this.tabPageDemo.TabIndex = 3;
+            this.tabPageDemo.Text = "Demo";
+            this.tabPageDemo.UseVisualStyleBackColor = true;
+            // 
+            // labelDemoSymbolsCnt
+            // 
+            this.labelDemoSymbolsCnt.AutoSize = true;
+            this.labelDemoSymbolsCnt.Location = new System.Drawing.Point(653, 28);
+            this.labelDemoSymbolsCnt.Name = "labelDemoSymbolsCnt";
+            this.labelDemoSymbolsCnt.Size = new System.Drawing.Size(27, 32);
+            this.labelDemoSymbolsCnt.TabIndex = 2;
+            this.labelDemoSymbolsCnt.Text = "0";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(522, 28);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(115, 32);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Symbols :";
+            // 
+            // richTextBoxDemo
+            // 
+            this.richTextBoxDemo.Location = new System.Drawing.Point(16, 28);
+            this.richTextBoxDemo.Name = "richTextBoxDemo";
+            this.richTextBoxDemo.Size = new System.Drawing.Size(500, 175);
+            this.richTextBoxDemo.TabIndex = 0;
+            this.richTextBoxDemo.Text = "";
             // 
             // groupBoxText
             // 
@@ -401,14 +615,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Модель (М):";
             // 
-            // textBoxMvpView
+            // richTextBoxDemo2
             // 
-            this.textBoxMvpView.Location = new System.Drawing.Point(787, 131);
-            this.textBoxMvpView.Multiline = true;
-            this.textBoxMvpView.Name = "textBoxMvpView";
-            this.textBoxMvpView.ReadOnly = true;
-            this.textBoxMvpView.Size = new System.Drawing.Size(214, 224);
-            this.textBoxMvpView.TabIndex = 7;
+            this.richTextBoxDemo2.Location = new System.Drawing.Point(16, 254);
+            this.richTextBoxDemo2.Name = "richTextBoxDemo2";
+            this.richTextBoxDemo2.Size = new System.Drawing.Size(500, 175);
+            this.richTextBoxDemo2.TabIndex = 0;
+            this.richTextBoxDemo2.Text = "";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(522, 254);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(115, 32);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Symbols :";
+            // 
+            // labelDemoSymbolsCnt2
+            // 
+            this.labelDemoSymbolsCnt2.AutoSize = true;
+            this.labelDemoSymbolsCnt2.Location = new System.Drawing.Point(653, 254);
+            this.labelDemoSymbolsCnt2.Name = "labelDemoSymbolsCnt2";
+            this.labelDemoSymbolsCnt2.Size = new System.Drawing.Size(27, 32);
+            this.labelDemoSymbolsCnt2.TabIndex = 2;
+            this.labelDemoSymbolsCnt2.Text = "0";
             // 
             // MvPatternsForm
             // 
@@ -432,6 +663,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.tabPageMVVM.ResumeLayout(false);
+            this.tabPageMVVM.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.tabPageDemo.ResumeLayout(false);
+            this.tabPageDemo.PerformLayout();
             this.groupBoxText.ResumeLayout(false);
             this.groupBoxText.PerformLayout();
             this.ResumeLayout(false);
@@ -471,5 +711,24 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxMvpView;
+        private System.Windows.Forms.TextBox textBoxMvvm;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TabPage tabPageDemo;
+        private System.Windows.Forms.Label labelDemoSymbolsCnt;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.RichTextBox richTextBoxDemo;
+        private System.Windows.Forms.Label labelDemoSymbolsCnt2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.RichTextBox richTextBoxDemo2;
     }
 }
