@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Practices.Unity;
 
 namespace WinForms.Forms
 {
     public partial class MvPatternsForm : Form
     {
         // inversion
-        private Random _random; // new random variable
-        public MvPatternsForm(Random random)
+        public MvPatternsForm()
         {
-            _random = random; // get random from container
             InitializeComponent();
         }
 
@@ -47,8 +46,8 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
             if(tabControlPatterns.SelectedIndex == 1) // MVP tab
             {
                 // array with random numbers
-                int[] rnds = new RndModel(_random).GetRandoms(3); 
-                foreach(var r in rnds)
+                int[] rnds = Program.Container.Resolve<RndModel>().GetRandoms(4);
+                foreach (var r in rnds)
                 {
                     textBoxMvpView.Text += r + "\r\n"; // show numbers in textbox
                 }
@@ -63,7 +62,7 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
         private Random _rnd; // random variable
         public RndModel(Random random) // inversion
         {
-            _rnd = random; 
+            _rnd = random;
         }
         public int[] GetRandoms(int count)
         {
