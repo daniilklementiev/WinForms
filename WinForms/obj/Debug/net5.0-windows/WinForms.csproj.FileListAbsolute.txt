@@ -51,3 +51,4 @@ C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\refint\WinF
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.pdb
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.genruntimeconfig.cache
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\ref\WinForms.dll
+C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.HookForm.resources

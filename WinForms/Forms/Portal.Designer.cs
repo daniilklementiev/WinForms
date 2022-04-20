@@ -35,6 +35,7 @@
             this.linkGdi = new System.Windows.Forms.LinkLabel();
             this.linkProcess = new System.Windows.Forms.LinkLabel();
             this.linkLabelPatterns = new System.Windows.Forms.LinkLabel();
+            this.linkLabelHooks = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -128,11 +129,25 @@
             this.linkLabelPatterns.Text = "Паттерны проектирования";
             this.linkLabelPatterns.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelPatterns_LinkClicked);
             // 
+            // linkLabelHooks
+            // 
+            this.linkLabelHooks.AutoSize = true;
+            this.linkLabelHooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelHooks.Location = new System.Drawing.Point(15, 598);
+            this.linkLabelHooks.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabelHooks.Name = "linkLabelHooks";
+            this.linkLabelHooks.Size = new System.Drawing.Size(563, 48);
+            this.linkLabelHooks.TabIndex = 0;
+            this.linkLabelHooks.TabStop = true;
+            this.linkLabelHooks.Text = "Унаследованный код (Хуки)";
+            this.linkLabelHooks.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHooks_LinkClicked);
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkLabelHooks);
             this.Controls.Add(this.linkLabelPatterns);
             this.Controls.Add(this.linkProcess);
             this.Controls.Add(this.linkGdi);
@@ -157,5 +172,6 @@
         private System.Windows.Forms.LinkLabel linkGdi;
         private System.Windows.Forms.LinkLabel linkProcess;
         private System.Windows.Forms.LinkLabel linkLabelPatterns;
+        private System.Windows.Forms.LinkLabel linkLabelHooks;
     }
 }
