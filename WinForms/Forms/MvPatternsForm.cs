@@ -54,7 +54,6 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
         {
             model = new DemoModel(filename);                // Model
             model.ModelChangeEvent += OnModelChange;        // Event handler (View -> Model)
-            model.ModelChangeEvent += OnFileSave;           // Event handler (View -> Model)
             richTextBoxDemo.TextChanged += (s, e) =>        // Model -> View
             {
                 model.Content = richTextBoxDemo.Text;       // Assignment will raise ModelChangeEvent 
@@ -90,12 +89,6 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
         {
             // Update symbols count view
             labelDemoSymbolsCnt.Text = model.Content.Length.ToString(); // binding Cnt.Text to Content.Lenght
-        }
-
-        // update file
-        private void OnFileSave()
-        {
-            File.WriteAllText(_filename, model.Content);
         }
 
         private void radioButtonDemo_CheckedChanged(object sender, EventArgs e)
@@ -160,6 +153,7 @@ Presenter - Form.cs; View - Form [Design].cs; Model - сохраненные (c�
             set
             {
                 content = value;                            // update buffer
+                File.WriteAllText(fileName, Content);       // update file
                 ModelChangeEvent.Invoke();                  // Raise event
             } 
         }
