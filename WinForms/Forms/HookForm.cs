@@ -12,8 +12,8 @@ namespace WinForms.Forms
     public partial class HookForm : Form
     {
         private delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
-        private Size resolution;
-        private Bitmap bitmap;
+        private Size resolution;    // screen resolution
+        private Bitmap bitmap;      // bitmap const for save image
         #region DLL Import
         [DllImport("user32.dll",                // DLL name
             EntryPoint = "SetWindowsHookEx",    // Proc name
@@ -39,30 +39,30 @@ namespace WinForms.Forms
         #endregion
 
         private const int
-            WM_KEYDOWN      = 0x100,
-            WM_KEYBOARD_LL  = 13,
-            WM_MOUSEMOVE    = 0x200,
-            WM_LBUTTONDOWN  = 0x0201,
-            WM_LBUTTONUP    = 0x0202,
-            WM_RBUTTONDOWN  = 0x0204,
-            WM_RBUTTONUP    = 0x0205,
-            WH_MOUSE_LL     = 14;
+            WM_KEYDOWN      = 0x100,        // keydown const
+            WM_KEYBOARD_LL  = 13,           // keyboard low const
+            WM_MOUSEMOVE    = 0x200,        // mousemove const
+            WM_LBUTTONDOWN  = 0x0201,       // left mouse button down const
+            WM_LBUTTONUP    = 0x0202,       // left mouse button up const
+            WM_RBUTTONDOWN  = 0x0204,       // right mouse button down const
+            WM_RBUTTONUP    = 0x0205,       // right mouse button up const
+            WH_MOUSE_LL     = 14;           // mouse low const
 
 
         public HookForm()
         {
-            kbHookPinned = null!;
-            mouseHookPinned = null!;
+            kbHookPinned = null!;                                                // keyboard hook in memory
+            mouseHookPinned = null!;                                             // mouse hook in memory
             InitializeComponent();
-            resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
-            bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.InitialImage = bitmap;
+            resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;  // get screen resolution
+            bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);          // creating bitmap wtih picturebox sizes
+            pictureBox1.InitialImage = bitmap;                                   // initialize picture box image
         }
 
         #region Keyboard hook
-        private IntPtr hKbHook;
-        private HookProc kbHookPinned;
-        private GCHandle kbGcHandle;
+        private IntPtr hKbHook;         // hook for keyboard
+        private HookProc kbHookPinned;  // keyboard hook memory
+        private GCHandle kbGcHandle;    // gc handle for keyboard hook
 
         [StructLayout(LayoutKind.Sequential)]
         struct KBDLLHOOKSTRUCT
@@ -72,7 +72,7 @@ namespace WinForms.Forms
             public int flags;
             public int time;
             public int dwExtraInfo;
-        }
+        }   // keyboard dll struct
         private void buttonKbStart_Click(object sender, EventArgs e)
         {
             tabPage1.Text = "Keyboard (active)";
@@ -85,9 +85,9 @@ namespace WinForms.Forms
                 if (currentModule == null) return;
 
                 kbHookPinned = KbHookProc;
-                kbGcHandle = GCHandle.Alloc(kbHookPinned);
+                kbGcHandle = GCHandle.Alloc(kbHookPinned);  // block keyboard hook
 
-                hKbHook = SetHook(
+                hKbHook = SetHook(                          // set hook
                         WM_KEYBOARD_LL,
                         kbHookPinned,
                         GetModule(currentModule.ModuleName!),
@@ -100,20 +100,20 @@ namespace WinForms.Forms
             tabPage1.Text = "Keyboard (disactive)";
             buttonKbStart.Enabled = true;
             buttonKbStop.Enabled = false;
-            UnSetHook(hKbHook);
-            kbGcHandle.Free();
+            UnSetHook(hKbHook);                 // unset hook
+            kbGcHandle.Free();                  // free gc memory
         }
 
         private IntPtr KbHookProc(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
-                // int keyVirtualtCode = Marshal.ReadInt32(lParam); // short version - only 1st field (32bit)
-                var msgData = Marshal.PtrToStructure<KBDLLHOOKSTRUCT>(lParam);    // full version - structure marshalling
+                // int keyVirtualtCode = Marshal.ReadInt32(lParam);                 // short version - only 1st field (32bit)
+                var msgData = Marshal.PtrToStructure<KBDLLHOOKSTRUCT>(lParam);      // full version - structure marshalling
 
-                Keys key = (Keys)msgData.vkCode; // (Keys)keyVirtualtCode;  // in short version
+                Keys key = (Keys)msgData.vkCode; // (Keys)keyVirtualtCode;          // in short version
                 richTextBoxKb.Text += key.ToString();
-                if (key == Keys.LWin)
+                if (key == Keys.LWin)                                               // left windows button  
                 {
                     richTextBoxKb.Text += "(rejected)";
                     return (IntPtr)1;
@@ -127,19 +127,19 @@ namespace WinForms.Forms
         #endregion
 
         #region Mouse hook
-        private IntPtr hMouseHook;
-        private HookProc mouseHookPinned;
-        private GCHandle mouseGcHandle;
+        private IntPtr hMouseHook;          // mouse hook
+        private HookProc mouseHookPinned;   // mouse hook in memory
+        private GCHandle mouseGcHandle;     // mouse gc handle
 
         [StructLayout(LayoutKind.Sequential)]
-        struct POINT
+        struct POINT                        // point struct for mouse
         {
             public int x;
             public int y;
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        struct MsHookStruct
+        struct MsHookStruct                 // mouse hook struct
         {
             public POINT point;
             public uint mouseData;
@@ -149,27 +149,27 @@ namespace WinForms.Forms
         }
         private int DrawMouseMap(Int32 position, Int32 minW, Int32 resolutionW, Int32 minH, Int32 resolutionH)
         {
-            return (minH + (position - minW) * (resolutionW - minH) / (resolutionH - minW));
+            return (minH + (position - minW) * (resolutionW - minH) / (resolutionH - minW)); // process value for map (picture box)
         }
         private IntPtr MsHookProc(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0)
             {
-                var msgData = Marshal.PtrToStructure<MsHookStruct>(lParam);    // full version - structure marshalling
-                POINT p = (POINT)msgData.point;
-                IntPtr extra = (IntPtr)msgData.dwExtraInfo;
-                uint msData = (uint)msgData.mouseData;
+                var msgData = Marshal.PtrToStructure<MsHookStruct>(lParam);  // full version - structure marshalling
+                POINT p = (POINT)msgData.point;                              // get point from struct
+                IntPtr extra = (IntPtr)msgData.dwExtraInfo;                  // extra data from struct
+                uint msData = (uint)msgData.mouseData;                       // mouse data from struct
 
                 switch ((int)wParam)
                 {
-                    case WM_LBUTTONDOWN: listBoxMs.Items.Add($"L: x = {p.x}, y = {p.y} | extra = {extra} | msdata = {msData}"); break;
-                    case WM_RBUTTONDOWN: listBoxMs.Items.Add($"R: x = {p.x}, y = {p.y} | extra = {extra} | msdata = {msData}"); break;
+                    case WM_LBUTTONDOWN: listBoxMs.Items.Add($"L: x = {p.x}, y = {p.y} | extra = {extra} | msdata = {msData}"); break;  // process left mouse button
+                    case WM_RBUTTONDOWN: listBoxMs.Items.Add($"R: x = {p.x}, y = {p.y} | extra = {extra} | msdata = {msData}"); break;  // process right mouse button
                     case WM_MOUSEMOVE:
-                        int x = DrawMouseMap(p.x, 0, resolution.Width, 0, pictureBox1.Width);
-                        int y = DrawMouseMap(p.y, 0, resolution.Height, 0, pictureBox1.Height);
+                        int x = DrawMouseMap(p.x, 0, resolution.Width, 0, pictureBox1.Width);    // get x pos for map
+                        int y = DrawMouseMap(p.y, 0, resolution.Height, 0, pictureBox1.Height);  // get y pos for map
 
-                        bitmap.SetPixel(x, y, Color.Black);
-                        pictureBox1.Image = bitmap;
+                        bitmap.SetPixel(x, y, Color.Black); // set pixel in bitmap map
+                        pictureBox1.Image = bitmap;         // set bitmap in picturebox
                         break;
                 }
             }
@@ -187,10 +187,10 @@ namespace WinForms.Forms
             {
                 if (currentModule == null) return;
 
-                mouseHookPinned = MsHookProc;
-                mouseGcHandle = GCHandle.Alloc(mouseHookPinned);
+                mouseHookPinned = MsHookProc;                     // remember mouse hook
+                mouseGcHandle = GCHandle.Alloc(mouseHookPinned);  // block hook
 
-                hMouseHook = SetHook(
+                hMouseHook = SetHook(                             // set hook
                         WH_MOUSE_LL,
                         mouseHookPinned,
                         GetModule(currentModule.ModuleName!),
@@ -203,8 +203,8 @@ namespace WinForms.Forms
             tabPage2.Text = "Mouse (disactive)";
             buttonMsStart.Enabled = true;
             buttonMsStop.Enabled = true;
-            mouseGcHandle.Free();
-            UnSetHook(hMouseHook);
+            mouseGcHandle.Free();               // free memory aftet process hook
+            UnSetHook(hMouseHook);              // unset hook
         }
 
         #endregion
