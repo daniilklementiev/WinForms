@@ -36,17 +36,27 @@ namespace WinForms.Forms
         [DllImport("kernel32.dll", EntryPoint = "GetModuleHandle", SetLastError = true)]
         private static extern IntPtr GetModule(String lpModuleName);
 
+        /// <summary>
+        /// Create system message(s) and sending them
+        /// </summary>
+        /// <param name="nInputs">Number of messages</param>
+        /// <param name="inputs">Messages (structures INPUT) array</param>
+        /// <param name="inpSize">Array memory size</param>
+        /// <returns></returns>
+        [DllImport("user32.dll", EntryPoint = "SendInput", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern uint SendMessages(uint nInputs, INPUT[] inputs, int inpSize);
+        
         #endregion
 
         private const int
-            WM_KEYDOWN      = 0x100,        // keydown const
-            WM_KEYBOARD_LL  = 13,           // keyboard low const
-            WM_MOUSEMOVE    = 0x200,        // mousemove const
-            WM_LBUTTONDOWN  = 0x0201,       // left mouse button down const
-            WM_LBUTTONUP    = 0x0202,       // left mouse button up const
-            WM_RBUTTONDOWN  = 0x0204,       // right mouse button down const
-            WM_RBUTTONUP    = 0x0205,       // right mouse button up const
-            WH_MOUSE_LL     = 14;           // mouse low const
+            WM_KEYDOWN = 0x100,        // keydown const
+            WM_KEYBOARD_LL = 13,           // keyboard low const
+            WM_MOUSEMOVE = 0x200,        // mousemove const
+            WM_LBUTTONDOWN = 0x0201,       // left mouse button down const
+            WM_LBUTTONUP = 0x0202,       // left mouse button up const
+            WM_RBUTTONDOWN = 0x0204,       // right mouse button down const
+            WM_RBUTTONUP = 0x0205,       // right mouse button up const
+            WH_MOUSE_LL = 14;           // mouse low const
 
 
         public HookForm()
@@ -59,20 +69,19 @@ namespace WinForms.Forms
             pictureBox1.InitialImage = bitmap;                                   // initialize picture box image
         }
 
+        private void HookForm_Load(object sender, EventArgs e)
+        {
+            listBoxReplaces.Items.Add("Space -> -");
+        }
+
+
         #region Keyboard hook
         private IntPtr hKbHook;         // hook for keyboard
         private HookProc kbHookPinned;  // keyboard hook memory
         private GCHandle kbGcHandle;    // gc handle for keyboard hook
 
-        [StructLayout(LayoutKind.Sequential)]
-        struct KBDLLHOOKSTRUCT
-        {
-            public int vkCode;
-            public int scanCode;
-            public int flags;
-            public int time;
-            public int dwExtraInfo;
-        }   // keyboard dll struct
+       
+       
         private void buttonKbStart_Click(object sender, EventArgs e)
         {
             tabPage1.Text = "Keyboard (active)";
@@ -92,6 +101,7 @@ namespace WinForms.Forms
                         kbHookPinned,
                         GetModule(currentModule.ModuleName!),
                         0);
+                this.ActiveControl = null;
             }
         }
 
@@ -102,6 +112,7 @@ namespace WinForms.Forms
             buttonKbStop.Enabled = false;
             UnSetHook(hKbHook);                 // unset hook
             kbGcHandle.Free();                  // free gc memory
+            this.ActiveControl = null;
         }
 
         private IntPtr KbHookProc(int nCode, IntPtr wParam, IntPtr lParam)
@@ -118,9 +129,41 @@ namespace WinForms.Forms
                     richTextBoxKb.Text += "(rejected)";
                     return (IntPtr)1;
                 }
+
+                // ****************** Key(s) replace demo ******************
+                if(key == Keys.Space) // Key to be replaced
+                {
+                    // new system message
+                    INPUT inp = new INPUT
+                    {
+                        Type = 1  // Keyboard message
+                    };
+                    inp.Data.Keyboard.Vk = (ushort)Keys.OemMinus;
+                    inp.Data.Keyboard.Scan = 0;
+                    inp.Data.Keyboard.Flags = 0;    // 0 - keyDown; 2 - keyUp
+                    inp.Data.Keyboard.Time = 0;
+                    inp.Data.Keyboard.ExtraInfo = IntPtr.Zero;
+
+                    INPUT[] msgs = new INPUT[] { inp };  // For SendInput array needed 
+
+                    SendMessages(1, msgs, Marshal.SizeOf(typeof(INPUT)));
+
+                    // log info
+                    richTextBoxKb.Text += "(Space -> -)";
+                    // delete current message
+                    return (IntPtr)1;
+                }
             }
 
             return NextHook(hKbHook, nCode, wParam, lParam);
+        }
+        private void textBoxSourceKey_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            var tb = sender as TextBox;
+            if (tb != null)
+                tb.Text = e.KeyData.ToString();
         }
 
 
@@ -131,22 +174,7 @@ namespace WinForms.Forms
         private HookProc mouseHookPinned;   // mouse hook in memory
         private GCHandle mouseGcHandle;     // mouse gc handle
 
-        [StructLayout(LayoutKind.Sequential)]
-        struct POINT                        // point struct for mouse
-        {
-            public int x;
-            public int y;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        struct MsHookStruct                 // mouse hook struct
-        {
-            public POINT point;
-            public uint mouseData;
-            public uint flags;
-            public uint time;
-            public IntPtr dwExtraInfo;
-        }
+        
         private int DrawMouseMap(Int32 position, Int32 minW, Int32 resolutionW, Int32 minH, Int32 resolutionH)
         {
             return (minH + (position - minW) * (resolutionW - minH) / (resolutionH - minW)); // process value for map (picture box)
@@ -208,6 +236,93 @@ namespace WinForms.Forms
         }
 
         #endregion
+
+        #region Structures
+        [StructLayout(LayoutKind.Sequential)]
+        struct KBDLLHOOKSTRUCT
+        {
+            public int vkCode;
+            public int scanCode;
+            public int flags;
+            public int time;
+            public int dwExtraInfo;
+        }   // keyboard dll struct
+
+       
+        [StructLayout(LayoutKind.Sequential)]
+        struct POINT                        // point struct for mouse
+        {
+            public int x;
+            public int y;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        struct MsHookStruct                 // mouse hook struct
+        {
+            public POINT point;
+            public uint mouseData;
+            public uint flags;
+            public uint time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct INPUT
+        {
+            public uint Type;
+            public MOUSEKEYBDHARDWAREINPUT Data;
+        }
+
+
+
+
+        [StructLayout(LayoutKind.Explicit)]
+        internal struct MOUSEKEYBDHARDWAREINPUT
+        {
+            [FieldOffset(0)]
+            public HARDWAREINPUT Hardware;
+            [FieldOffset(0)]
+            public KEYBDINPUT Keyboard;
+            [FieldOffset(0)]
+            public MOUSEINPUT Mouse;
+        }
+
+
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct HARDWAREINPUT
+        {
+            public uint Msg;
+            public ushort ParamL;
+            public ushort ParamH;
+        }
+
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct KEYBDINPUT
+        {
+            public ushort Vk;
+            public ushort Scan;
+            public uint Flags;
+            public uint Time;
+            public IntPtr ExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct MOUSEINPUT
+        {
+            public int X;
+            public int Y;
+            public uint MouseData;
+            public uint Flags;
+            public uint Time;
+            public IntPtr ExtraInfo;
+        }
+        #endregion
+
+
     }
 }
 
