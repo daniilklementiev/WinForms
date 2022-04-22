@@ -87,15 +87,36 @@ namespace WinForms.Forms
             }
             else
             {
-                MessageBox.Show($"{cipherData.SourceFile}\r\n \t\t|\r\n\t\tV \r\n{cipherData.TargetFile}");
+                // MessageBox.Show($"{cipherData.SourceFile}\r\n \t\t|\r\n\t\tV \r\n{cipherData.TargetFile}");
+                String content = File.ReadAllText(cipherData.SourceFile);
+                String encrypted = Encrypt(content, textBoxPassword.Text);
+                File.WriteAllText(cipherData.TargetFile, encrypted);
             }
         }
 
-        private void buttonShowPassword_Click(object sender, EventArgs e)
+        private String Encrypt(string content, string password)
+        {
+            char[] forEncrypt = content.ToCharArray();
+            char[] passwordInChar = password.ToCharArray();
+            for (int i = 0; i < forEncrypt.Length; ++i)
+                forEncrypt[i] ^= passwordInChar[i % passwordInChar.Length];
+            return new string(forEncrypt);
+        }
+
+
+        private void buttonShowPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            PASSWORD_CHAR = textBoxPassword.PasswordChar == PASSWORD_CHAR ? PASSWORD_CHAR = '\0' : PASSWORD_CHAR = '*';
+            textBoxPassword.PasswordChar = PASSWORD_CHAR;
+        }
+
+        private void buttonShowPassword_MouseUp(object sender, MouseEventArgs e)
         {
             PASSWORD_CHAR = textBoxPassword.PasswordChar == '\0' ? PASSWORD_CHAR = '*' : PASSWORD_CHAR = '\0';
             textBoxPassword.PasswordChar = PASSWORD_CHAR;
         }
+
+       
     }
 
     class CipherData

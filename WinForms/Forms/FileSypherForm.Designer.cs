@@ -182,7 +182,8 @@
             this.buttonShowPassword.TabIndex = 5;
             this.buttonShowPassword.Text = "👁";
             this.buttonShowPassword.UseVisualStyleBackColor = true;
-            this.buttonShowPassword.Click += new System.EventHandler(this.buttonShowPassword_Click);
+            this.buttonShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseDown);
+            this.buttonShowPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseUp);
             // 
             // FileSypherForm
             // 
