@@ -12,8 +12,11 @@ namespace WinForms.Forms
     public partial class HookForm : Form
     {
         private delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
-        private Size resolution;    // screen resolution
-        private Bitmap bitmap;      // bitmap const for save image
+        private Size resolution;                            // screen resolution
+        private Bitmap bitmap;                              // bitmap const for save image
+        private Dictionary<Keys, Keys> replacedButtons;     // replaced buttons
+        private KeysConverter keyConverter;                 // convert key to keys
+        
         #region DLL Import
         [DllImport("user32.dll",                // DLL name
             EntryPoint = "SetWindowsHookEx",    // Proc name
@@ -67,11 +70,13 @@ namespace WinForms.Forms
             resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;  // get screen resolution
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);          // creating bitmap wtih picturebox sizes
             pictureBox1.InitialImage = bitmap;                                   // initialize picture box image
+            replacedButtons = new Dictionary<Keys, Keys>();                      // create dictionary for replaced buttons
+            keyConverter = new KeysConverter();                                  // create keys converter
         }
 
         private void HookForm_Load(object sender, EventArgs e)
         {
-            listBoxReplaces.Items.Add("Space -> -");
+            
         }
 
 
@@ -131,27 +136,33 @@ namespace WinForms.Forms
                 }
 
                 // ****************** Key(s) replace demo ******************
-                if(key == Keys.Space) // Key to be replaced
+                // cycle that replace all keys from listbox 
+                foreach (var repKey in replacedButtons)
                 {
-                    // new system message
-                    INPUT inp = new INPUT
+                    if (key == repKey.Key)
                     {
-                        Type = 1  // Keyboard message
-                    };
-                    inp.Data.Keyboard.Vk = (ushort)Keys.OemMinus;
-                    inp.Data.Keyboard.Scan = 0;
-                    inp.Data.Keyboard.Flags = 0;    // 0 - keyDown; 2 - keyUp
-                    inp.Data.Keyboard.Time = 0;
-                    inp.Data.Keyboard.ExtraInfo = IntPtr.Zero;
+                        // new system message
+                        INPUT inp = new INPUT
+                        {
+                            Type = 1  // Keyboard message
+                        };
+                        inp.Data.Keyboard.Vk = (ushort)repKey.Value;
+                        inp.Data.Keyboard.Scan = 0;
+                        inp.Data.Keyboard.Flags = 0;    // 0 - keyDown; 2 - keyUp
+                        inp.Data.Keyboard.Time = 0;
+                        inp.Data.Keyboard.ExtraInfo = IntPtr.Zero;
 
-                    INPUT[] msgs = new INPUT[] { inp };  // For SendInput array needed 
+                        INPUT[] msgs = new INPUT[] { inp };  // For SendInput array needed
 
-                    SendMessages(1, msgs, Marshal.SizeOf(typeof(INPUT)));
+                        
+                        SendMessages(1, msgs, Marshal.SizeOf(typeof(INPUT)));
 
-                    // log info
-                    richTextBoxKb.Text += "(Space -> -)";
-                    // delete current message
-                    return (IntPtr)1;
+                        // Log info
+                        richTextBoxKb.Text += $"({repKey.Key.ToString()} --> {repKey.Value.ToString()})";
+
+                        // delete current message
+                        return (IntPtr)1;
+                    }
                 }
             }
 
@@ -159,12 +170,34 @@ namespace WinForms.Forms
         }
         private void textBoxSourceKey_KeyDown(object sender, KeyEventArgs e)
         {
+            // process keys in textbox
             e.Handled = true;
             e.SuppressKeyPress = true;
             var tb = sender as TextBox;
             if (tb != null)
                 tb.Text = e.KeyData.ToString();
         }
+
+        private void buttonAddReplace_Click(object sender, EventArgs e)
+        {
+            // check if key is already in list
+            if (textBoxSourceKey.Text != String.Empty && textBoxTargetKey.Text != String.Empty)
+            {
+                // if no - add to list
+                if (!replacedButtons.ContainsKey((Keys)keyConverter.ConvertFromString(textBoxSourceKey.Text)))
+                {
+                    // Convert name of key to Keys type and add replacing to dictionary
+                    Keys replacedKeySource = (Keys)keyConverter.ConvertFromString(textBoxSourceKey.Text);
+                    Keys replacedKeyTarget = (Keys)keyConverter.ConvertFromString(textBoxTargetKey.Text);
+                    replacedButtons[replacedKeySource] = replacedKeyTarget;
+                    listBoxReplaces.Items.Add($"{textBoxSourceKey.Text} --> {textBoxTargetKey.Text}");
+                }
+                else
+                {
+                    MessageBox.Show("This key already replaced. Try another");
+                }
+            }
+        }        
 
 
         #endregion
@@ -248,7 +281,6 @@ namespace WinForms.Forms
             public int dwExtraInfo;
         }   // keyboard dll struct
 
-       
         [StructLayout(LayoutKind.Sequential)]
         struct POINT                        // point struct for mouse
         {

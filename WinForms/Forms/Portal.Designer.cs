@@ -36,6 +36,8 @@
             this.linkProcess = new System.Windows.Forms.LinkLabel();
             this.linkLabelPatterns = new System.Windows.Forms.LinkLabel();
             this.linkLabelHooks = new System.Windows.Forms.LinkLabel();
+            this.linkLabelAsync1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2Async = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -142,11 +144,38 @@
             this.linkLabelHooks.Text = "Унаследованный код (Хуки)";
             this.linkLabelHooks.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHooks_LinkClicked);
             // 
+            // linkLabelAsync1
+            // 
+            this.linkLabelAsync1.AutoSize = true;
+            this.linkLabelAsync1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelAsync1.Location = new System.Drawing.Point(15, 664);
+            this.linkLabelAsync1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabelAsync1.Name = "linkLabelAsync1";
+            this.linkLabelAsync1.Size = new System.Drawing.Size(937, 48);
+            this.linkLabelAsync1.TabIndex = 0;
+            this.linkLabelAsync1.TabStop = true;
+            this.linkLabelAsync1.Text = "Асинхронное программирование 1 (Шифратор)";
+            this.linkLabelAsync1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAsync1_LinkClicked);
+            // 
+            // linkLabel2Async
+            // 
+            this.linkLabel2Async.AutoSize = true;
+            this.linkLabel2Async.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabel2Async.Location = new System.Drawing.Point(15, 732);
+            this.linkLabel2Async.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabel2Async.Name = "linkLabel2Async";
+            this.linkLabel2Async.Size = new System.Drawing.Size(931, 48);
+            this.linkLabel2Async.TabIndex = 0;
+            this.linkLabel2Async.TabStop = true;
+            this.linkLabel2Async.Text = "Асинхронное программирование 2 (Фракталы)";
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkLabel2Async);
+            this.Controls.Add(this.linkLabelAsync1);
             this.Controls.Add(this.linkLabelHooks);
             this.Controls.Add(this.linkLabelPatterns);
             this.Controls.Add(this.linkProcess);
@@ -173,5 +202,7 @@
         private System.Windows.Forms.LinkLabel linkProcess;
         private System.Windows.Forms.LinkLabel linkLabelPatterns;
         private System.Windows.Forms.LinkLabel linkLabelHooks;
+        private System.Windows.Forms.LinkLabel linkLabelAsync1;
+        private System.Windows.Forms.LinkLabel linkLabel2Async;
     }
 }

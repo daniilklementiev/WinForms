@@ -99,6 +99,7 @@
             this.buttonAddReplace.TabIndex = 3;
             this.buttonAddReplace.Text = "+";
             this.buttonAddReplace.UseVisualStyleBackColor = true;
+            this.buttonAddReplace.Click += new System.EventHandler(this.buttonAddReplace_Click);
             // 
             // textBoxSourceKey
             // 

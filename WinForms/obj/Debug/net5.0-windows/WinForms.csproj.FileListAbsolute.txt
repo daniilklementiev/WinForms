@@ -52,3 +52,4 @@ C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.pd
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.genruntimeconfig.cache
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\ref\WinForms.dll
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.HookForm.resources
+C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.FileSypherForm.resources

@@ -23,42 +23,65 @@ namespace WinForms.Forms
 
         private void Intro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             new Form1().ShowDialog();
+            this.Show();
         }
 
         private void Calculator_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             new Calculator(_logger).ShowDialog();
+            this.Show();
         }
 
         private void Progress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();            
             Program.Container.Resolve<Forms.ProgressForm>().ShowDialog();
+            this.Show();
         }
 
         private void linkLabel2048_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();            
             Program.Container.Resolve<Forms.Game2048>().ShowDialog();
+            this.Show();
         }
 
         private void linkGdi_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             Program.Container.Resolve<Forms.GDIForm>().ShowDialog();
+            this.Show();
         }
 
         private void linkProcess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             Program.Container.Resolve<Forms.ProcessForm>().ShowDialog();
+            this.Show();
         }
 
         private void linkLabelPatterns_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             Program.Container.Resolve<Forms.MvPatternsForm>().ShowDialog();
+            this.Show();
         }
 
         private void linkLabelHooks_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             Program.Container.Resolve<Forms.HookForm>().ShowDialog();
+            this.Show();
+        }
+
+        private void linkLabelAsync1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+           this.Hide();     // hide - visible = false
+            Program.Container.Resolve<Forms.FileSypherForm>().ShowDialog();
+            this.Show();    // visible = true
         }
     }
 }
