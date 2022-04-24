@@ -180,7 +180,7 @@
             this.buttonShowPassword.Name = "buttonShowPassword";
             this.buttonShowPassword.Size = new System.Drawing.Size(74, 39);
             this.buttonShowPassword.TabIndex = 5;
-            this.buttonShowPassword.Text = "👁";
+            this.buttonShowPassword.Text = "🙈";
             this.buttonShowPassword.UseVisualStyleBackColor = true;
             this.buttonShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseDown);
             this.buttonShowPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseUp);

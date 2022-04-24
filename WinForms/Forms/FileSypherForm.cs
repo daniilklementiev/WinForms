@@ -106,14 +106,17 @@ namespace WinForms.Forms
 
         private void buttonShowPassword_MouseDown(object sender, MouseEventArgs e)
         {
+            
             PASSWORD_CHAR = textBoxPassword.PasswordChar == PASSWORD_CHAR ? PASSWORD_CHAR = '\0' : PASSWORD_CHAR = '*';
             textBoxPassword.PasswordChar = PASSWORD_CHAR;
+            buttonShowPassword.Text = "🐵";
         }
 
         private void buttonShowPassword_MouseUp(object sender, MouseEventArgs e)
         {
             PASSWORD_CHAR = textBoxPassword.PasswordChar == '\0' ? PASSWORD_CHAR = '*' : PASSWORD_CHAR = '\0';
             textBoxPassword.PasswordChar = PASSWORD_CHAR;
+            buttonShowPassword.Text = "🙈";
         }
 
        
