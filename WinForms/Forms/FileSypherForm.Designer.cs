@@ -45,8 +45,12 @@
             this.textBoxTarget = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonShowPassword = new System.Windows.Forms.Button();
+            this.panelProgress = new System.Windows.Forms.Panel();
+            this.buttonCancelProgress = new System.Windows.Forms.Button();
+            this.progressBarCiphering = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             this.panelTarget.SuspendLayout();
+            this.panelProgress.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -185,12 +189,39 @@
             this.buttonShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseDown);
             this.buttonShowPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonShowPassword_MouseUp);
             // 
+            // panelProgress
+            // 
+            this.panelProgress.Controls.Add(this.progressBarCiphering);
+            this.panelProgress.Controls.Add(this.buttonCancelProgress);
+            this.panelProgress.Location = new System.Drawing.Point(212, 240);
+            this.panelProgress.Name = "panelProgress";
+            this.panelProgress.Size = new System.Drawing.Size(650, 78);
+            this.panelProgress.TabIndex = 4;
+            // 
+            // buttonCancelProgress
+            // 
+            this.buttonCancelProgress.Location = new System.Drawing.Point(471, 16);
+            this.buttonCancelProgress.Name = "buttonCancelProgress";
+            this.buttonCancelProgress.Size = new System.Drawing.Size(150, 46);
+            this.buttonCancelProgress.TabIndex = 0;
+            this.buttonCancelProgress.Text = "Cancel";
+            this.buttonCancelProgress.UseVisualStyleBackColor = true;
+            this.buttonCancelProgress.Click += new System.EventHandler(this.buttonCancelProgress_Click);
+            // 
+            // progressBarCiphering
+            // 
+            this.progressBarCiphering.Location = new System.Drawing.Point(0, 0);
+            this.progressBarCiphering.Name = "progressBarCiphering";
+            this.progressBarCiphering.Size = new System.Drawing.Size(451, 78);
+            this.progressBarCiphering.TabIndex = 1;
+            // 
             // FileSypherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 724);
             this.Controls.Add(this.buttonShowPassword);
+            this.Controls.Add(this.panelProgress);
             this.Controls.Add(this.panelTarget);
             this.Controls.Add(this.buttonCipher);
             this.Controls.Add(this.buttonSelectFile);
@@ -207,6 +238,7 @@
             this.menuStrip1.PerformLayout();
             this.panelTarget.ResumeLayout(false);
             this.panelTarget.PerformLayout();
+            this.panelProgress.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,5 +264,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonSelectTarget;
         private System.Windows.Forms.Button buttonShowPassword;
+        private System.Windows.Forms.Panel panelProgress;
+        private System.Windows.Forms.ProgressBar progressBarCiphering;
+        private System.Windows.Forms.Button buttonCancelProgress;
     }
 }
