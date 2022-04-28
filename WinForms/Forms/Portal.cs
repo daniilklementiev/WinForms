@@ -79,9 +79,16 @@ namespace WinForms.Forms
 
         private void linkLabelAsync1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           this.Hide();     // hide - visible = false
+            this.Hide();     // hide - visible = false
             Program.Container.Resolve<Forms.FileSypherForm>().ShowDialog();
             this.Show();    // visible = true
+        }
+
+        private void linkLabel2Async_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Program.Container.Resolve<Forms.FractalForm>().ShowDialog();
+            this.Show();    
         }
     }
 }

@@ -19,7 +19,6 @@ namespace WinForms.Forms
         private const String SAMPLE_FILENAME = "sample.txt";
         private const String SAMPLE_CONTENT  = "Hello World!";
         private char PASSWORD_CHAR;
-        private bool cancel;
 
         private CipherData cipherData;
         private CancellationTokenSource cancellationTokenSource;
@@ -31,7 +30,6 @@ namespace WinForms.Forms
             InitializeComponent();
             cipherData = new CipherData();
             cancellationTokenSource = null!;
-            cancel = false;
         }
         
         private void FileSypherForm_Load(object sender, EventArgs e)
@@ -146,13 +144,19 @@ namespace WinForms.Forms
                             progressValue = (int)((cnt * 100) / fileSize); // calculate value
                             Invoke( (Action) UpdateProgress);
                             Thread.Sleep(300);
-                            if (cancel)
+                            if (td.cts.IsCancellationRequested)
                             {
-                                if (DialogResult.Yes == MessageBox.Show("Sure?", "Ciphering stopped", MessageBoxButtons.YesNo))
+                                if (DialogResult.Yes == MessageBox.Show("Sure?", "Cancel", MessageBoxButtons.YesNo))
                                 {
-                                    throw new OperationCanceledException();
+                                    td.cts.ThrowIfCancellationRequested();
+                                    
                                 }
-                                cancel = false;
+                                else
+                                {
+                                    // Create new Sourse and Token (old token cant be reused)
+                                    cancellationTokenSource = new CancellationTokenSource();
+                                    td.cts = cancellationTokenSource.Token;
+                                }
                             }
                         }
                         
@@ -171,7 +175,15 @@ namespace WinForms.Forms
             }
             catch(OperationCanceledException) // Cancellation
             {
-                cancel = false;
+                // Here confirmed cancellation
+                // delete target file
+                try { File.Delete(td.CipherData.TargetFile); }
+                catch { }
+                finally 
+                { 
+                    MessageBox.Show("Cancelled");
+                }
+
             }
             finally
             {
@@ -193,6 +205,9 @@ namespace WinForms.Forms
             }
         }
 
+        /// <summary>
+        /// Clear text boxes after ciphering
+        /// </summary>
         private void ClearBoxes()
         {
             lock(textBoxPassword)
@@ -220,7 +235,6 @@ namespace WinForms.Forms
             }
         }
 
-
         private void buttonShowPassword_MouseDown(object sender, MouseEventArgs e)
         {
             
@@ -238,7 +252,6 @@ namespace WinForms.Forms
 
         private void buttonCancelProgress_Click(object sender, EventArgs e)
         {
-            cancel = true;
             cancellationTokenSource.Cancel();
         }
     }

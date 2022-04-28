@@ -168,6 +168,7 @@
             this.linkLabel2Async.TabIndex = 0;
             this.linkLabel2Async.TabStop = true;
             this.linkLabel2Async.Text = "Асинхронное программирование 2 (Фракталы)";
+            this.linkLabel2Async.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2Async_LinkClicked);
             // 
             // Portal
             // 
