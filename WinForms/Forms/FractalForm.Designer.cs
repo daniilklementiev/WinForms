@@ -165,7 +165,7 @@
             this.panelPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPicture.Location = new System.Drawing.Point(437, 52);
             this.panelPicture.Name = "panelPicture";
-            this.panelPicture.Size = new System.Drawing.Size(656, 522);
+            this.panelPicture.Size = new System.Drawing.Size(450, 450);
             this.panelPicture.TabIndex = 3;
             // 
             // FractalForm

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Practices.Unity;
+using System.Diagnostics;
 
 namespace WinForms.Forms
 {
@@ -15,18 +17,28 @@ namespace WinForms.Forms
     {
         private Brush сonvergentBrush;      // if graphic convergent
         private Brush diсonvergentBrush;    // if graphic not convergent
-        Graphics graphics;                  // graphics variable  
+        Graphics graphics;                  // graphics variable
+        private Thread drawThread;
+        private Stopwatch stopwatch;
+                                            
+        // [Dependency]
+        // public Services.IRandom Random { get; set; }
+        
+        
         public FractalForm()
         {
             InitializeComponent();
             сonvergentBrush = new SolidBrush(Color.White);
             diсonvergentBrush = new SolidBrush(Color.Black);
             graphics = null!;
+            drawThread = null!;
         }
         private void FractalForm_Load(object sender, EventArgs e)
         {
             this.ActiveControl = buttonStart;           // set focus on buttonStart
             graphics = panelPicture.CreateGraphics();   // create graphics variable for panelPicture
+            // textBoxImC.Text = Random.NextDouble().ToString();
+            // textBoxReC.Text = Random.NextDouble().ToString();
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +55,14 @@ namespace WinForms.Forms
         /// <param name="e"></param>
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            // if start button clicked while thread not finished
+            if (drawThread != null)
+            {
+                MessageBox.Show("Wait please");
+                return;
+            }                
             Complex C;
+
             try
             {
                 C = new Complex
@@ -57,9 +76,12 @@ namespace WinForms.Forms
                 MessageBox.Show("Something wrong with numeric values");
                 return;
             }
-            new Thread(CheckingPixels).Start(C);
+            drawThread = new Thread(CheckingPixels);
+            stopwatch = Stopwatch.StartNew();
+            drawThread.Start(C);
         }
-        
+
+        int threadCnt;
         private async void ShowPoint2(int x, int y, Complex C)
         {
             await Task.Run(() =>
@@ -93,10 +115,18 @@ namespace WinForms.Forms
                     // Рисуем пиксель - прямоугольник 1х1
                     // using (Graphics g = panelPicture.CreateGraphics())
                     graphics.FillRectangle(colorPixel, x, y, 1, 1);
+                    threadCnt--;
+                    if (threadCnt == 0)
+                    {
+                        stopwatch.Stop();
+                        MessageBox.Show("Finished @" + stopwatch.ElapsedMilliseconds);
+                        drawThread = null!;
+                    }
                 }
             });
         }
-        
+
+
         /// <summary>
         /// Checking all pixels of panel
         /// </summary>
@@ -105,13 +135,27 @@ namespace WinForms.Forms
         {
             Complex? C = obj as Complex;
             if (C == null) return;
-
+            threadCnt = panelPicture.Width * panelPicture.Height;
             for (int x = 0; x < panelPicture.Width; x += 1)         // width of panel
                 for (int y = 0; y < panelPicture.Height; y += 1)    // height of panel
                 {
-                    // 
-                    ThreadPool.QueueUserWorkItem(ShowPoint, new PointData { X = x, Y = y, C = C });
+                    // Sync - 11 sec (degree - 2)
+                    // ShowPoint(new PointData { X = x, Y = y, C = C });
+
+                    // MultiThread
+                    // new Thread(ShowPoint).Start(new PointData { X = x, Y = y, C = C });
+
+                    // MultiTask - 48 sec (degree - 2)
+                    ShowPoint2(x, y, C);
+
+                    // ThreadPool - 12 sec (degree - 2)
+                    // ThreadPool.QueueUserWorkItem(ShowPoint, new PointData { X = x, Y = y, C = C });
+                    
                 }
+                      
+            // stopwatch.Stop();
+            // MessageBox.Show("Finished @" + stopwatch.ElapsedMilliseconds);
+            // drawThread = null!;
         }
 
         /// <summary>
@@ -128,8 +172,8 @@ namespace WinForms.Forms
 
             Complex Z = new Complex
             {
-                Re = 0.1 * 3.0 * (data.X - panelPicture.Width / 2) / panelPicture.Width,   // Определить значения из соображений, что края
-                Im = 0.1 * 3.0 * (data.Y - panelPicture.Height / 2) / panelPicture.Height  // "холста" имеют значения -1.5 1.5
+                Re = 3.0 * (data.X - panelPicture.Width / 2) / panelPicture.Width,   // Определить значения из соображений, что края
+                Im = 3.0 * (data.Y - panelPicture.Height / 2) / panelPicture.Height  // "холста" имеют значения -1.5 1.5
             };
             int n = 0;
             do
@@ -155,6 +199,13 @@ namespace WinForms.Forms
                 // Рисуем пиксель - прямоугольник 1х1
                 //using (Graphics g = panelPicture.CreateGraphics())
                 graphics.FillRectangle(colorPixel, data.X, data.Y, 1, 1);
+                threadCnt--;
+                if(threadCnt == 0)
+                {
+                    stopwatch.Stop();
+                    MessageBox.Show("Finished @" + stopwatch.ElapsedMilliseconds);
+                    drawThread = null!;
+                }
             }
 
         }

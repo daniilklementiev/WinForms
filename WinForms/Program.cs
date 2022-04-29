@@ -7,7 +7,6 @@ using NLog;
 using Microsoft.Practices.Unity;
 namespace WinForms
 {
-
     internal static class Program
     {
         public static UnityContainer Container { get; set; }
@@ -39,6 +38,11 @@ namespace WinForms
             Container.RegisterInstance(logger);  
             // Random - one for project
             Container.RegisterInstance(new Random());
+
+            Container.RegisterType<      // Регистрация типов (ленивая)
+                Services.IRandom,        // Тип - интерфейс 
+                Services.SimpleRandom>   // Тип - реализация (интерфейса)
+                ();
             // Run app
             Application.Run(//new Forms.Portal(logger)
                             Container.Resolve<Forms.Portal>()
