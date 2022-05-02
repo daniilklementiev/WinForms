@@ -31,4 +31,8 @@
     <Folder Include="Res\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyLibrary\MyLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

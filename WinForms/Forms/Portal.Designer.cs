@@ -38,6 +38,7 @@
             this.linkLabelHooks = new System.Windows.Forms.LinkLabel();
             this.linkLabelAsync1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2Async = new System.Windows.Forms.LinkLabel();
+            this.linkLabelHasher = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Intro
@@ -170,11 +171,25 @@
             this.linkLabel2Async.Text = "Асинхронное программирование 2 (Фракталы)";
             this.linkLabel2Async.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2Async_LinkClicked);
             // 
+            // linkLabelHasher
+            // 
+            this.linkLabelHasher.AutoSize = true;
+            this.linkLabelHasher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelHasher.Location = new System.Drawing.Point(15, 798);
+            this.linkLabelHasher.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabelHasher.Name = "linkLabelHasher";
+            this.linkLabelHasher.Size = new System.Drawing.Size(686, 48);
+            this.linkLabelHasher.TabIndex = 0;
+            this.linkLabelHasher.TabStop = true;
+            this.linkLabelHasher.Text = "Библиотеки класса (шифрование)";
+            this.linkLabelHasher.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHasher_LinkClicked);
+            // 
             // Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
+            this.Controls.Add(this.linkLabelHasher);
             this.Controls.Add(this.linkLabel2Async);
             this.Controls.Add(this.linkLabelAsync1);
             this.Controls.Add(this.linkLabelHooks);
@@ -205,5 +220,6 @@
         private System.Windows.Forms.LinkLabel linkLabelHooks;
         private System.Windows.Forms.LinkLabel linkLabelAsync1;
         private System.Windows.Forms.LinkLabel linkLabel2Async;
+        private System.Windows.Forms.LinkLabel linkLabelHasher;
     }
 }

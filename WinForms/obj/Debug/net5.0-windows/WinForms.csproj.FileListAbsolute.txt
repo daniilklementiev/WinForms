@@ -54,3 +54,6 @@ C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\ref\WinForm
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.HookForm.resources
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.FileSypherForm.resources
 C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.Forms.FractalForm.resources
+C:\Users\daniil\source\repos\Forms\WinForms\obj\Debug\net5.0-windows\WinForms.HashForm.resources
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\MyLibrary.dll
+C:\Users\daniil\source\repos\Forms\WinForms\bin\Debug\net5.0-windows\MyLibrary.pdb

@@ -90,5 +90,12 @@ namespace WinForms.Forms
             Program.Container.Resolve<Forms.FractalForm>().ShowDialog();
             this.Show();    
         }
+
+        private void linkLabelHasher_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Program.Container.Resolve<HashForm>().ShowDialog();
+            this.Show();
+        }
     }
 }

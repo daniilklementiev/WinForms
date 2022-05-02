@@ -35,6 +35,16 @@
           "lib/netstandard2.0/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
           "lib/netstandard2.0/Microsoft.Practices.Unity.dll": {}
         }
+      },
+      "MyLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/MyLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyLibrary.dll": {}
+        }
       }
     }
   },
@@ -101,10 +111,16 @@
         "unity.netcore.4.0.3.nupkg.sha512",
         "unity.netcore.nuspec"
       ]
+    },
+    "MyLibrary/1.0.0": {
+      "type": "project",
+      "path": "../MyLibrary/MyLibrary.csproj",
+      "msbuildProject": "../MyLibrary/MyLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
+      "MyLibrary >= 1.0.0",
       "NLog >= 4.7.15",
       "Unity.NetCore >= 4.0.3"
     ]
@@ -140,7 +156,11 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\daniil\\source\\repos\\Forms\\MyLibrary\\MyLibrary.csproj": {
+              "projectPath": "C:\\Users\\daniil\\source\\repos\\Forms\\MyLibrary\\MyLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
